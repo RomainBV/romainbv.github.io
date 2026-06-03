@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romain Beauvais | Docteur en Acoustique & Ingénieur R&D</title>
     <style>
-        /* --- COULEURS INSPIRÉES DU LATEX --- */
+        /* --- COULEURS DU LATEX --- */
         :root {
             --primary-color: #0E3A67;  /* Bleu Foncé */
             --accent-color: #1B6CA8;   /* Bleu Lumineux */
@@ -131,9 +131,9 @@
             font-size: 0.95rem;
         }
 
-        /* --- EXPÉRIENCES (MISES EN VALEUR) --- */
+        /* --- EXPÉRIENCES & RECHERCHE --- */
         .exp-item {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .exp-header {
@@ -141,7 +141,7 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .exp-title h3 {
@@ -162,20 +162,25 @@
 
         .exp-body {
             display: flex;
-            gap: 20px;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .exp-text {
-            flex: 1;
+        /* IMAGES EN GRAND SOUS LE TEXTE */
+        .research-img-container {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
         }
 
-        .exp-img {
-            width: 180px;
+        .research-img {
+            width: 100%;
+            max-width: 650px; /* Grand format lisible */
             height: auto;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             background-color: #eaeaea;
+            display: inline-block;
         }
 
         /* --- LISTE DES PUBLICATIONS --- */
@@ -204,7 +209,6 @@
 
         .badge-journal { background-color: #dcfce7; color: #166534; }
         .badge-conf { background-color: #dbeafe; color: #1e40af; }
-        .badge-thesis { background-color: #f3e8ff; color: #6b21a8; }
 
         .pub-title {
             font-weight: bold;
@@ -229,7 +233,7 @@
             text-decoration: underline;
         }
 
-        /* --- RESPONSIVE (SMARTPHONES/TABLETTES) --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 850px) {
             .container {
                 grid-template-columns: 1fr;
@@ -237,14 +241,6 @@
             aside {
                 position: relative;
                 top: 0;
-            }
-            .exp-body {
-                flex-direction: column;
-            }
-            .exp-img {
-                width: 100%;
-                max-width: 300px;
-                margin-top: 10px;
             }
             .exp-meta {
                 text-align: left;
@@ -257,7 +253,7 @@
 
 <div class="container">
 
-    <!-- BARRE LATÉRALE : IDENTITÉ ET CONTACT -->
+    <!-- BARRE LATÉRALE -->
     <aside>
         <img src="photo.png" alt="Romain Beauvais" class="profile-img">
         <h1>Romain Beauvais</h1>
@@ -277,7 +273,7 @@
         <!-- PROFIL -->
         <section id="profil">
             <h2>Profil</h2>
-            <p>Docteur en acoustique avec expérience en R&D, modélisation multiphysique et simulation numérique. Expertise en propagation d'ondes, couplages fluide-structure, turbulence, traitement du signal et mesures LASER (PIV). Objectif : contribuer à des projets d'ingénierie à fort contenu scientifique, du modèle physique à la validation expérimentale.</p>
+            <p>Docteur en acoustique avec expérience en R&D, modélisation multiphysique et simulation numérique. Expertise en propagation d'ondes, couplages fluide-structure, turbulence, traitement du signal et mesures LASER (PIV). Mon objectif est de contribuer à des projets d'ingénierie à fort contenu scientifique, du modèle physique à la validation expérimentale.</p>
         </section>
 
         <!-- COMPÉTENCES -->
@@ -286,7 +282,7 @@
             <div class="skills-grid">
                 <div class="skill-box">
                     <h4>Domaines d'expertise</h4>
-                    <p>Acoustique, vibrations, turbulence, traitement du signal, instrumentation LASER.</p>
+                    <p>Acoustique, vibrations, turbulences, traitement du signal, instrumentation LASER.</p>
                 </div>
                 <div class="skill-box">
                     <h4>Calcul scientifique & Data</h4>
@@ -298,28 +294,26 @@
                 </div>
                 <div class="skill-box">
                     <h4>Langues & Rédaction</h4>
-                    <p>Anglais (très bonne maîtrise), Espagnol (convenable). Rédaction technique : LaTeX, Word, PowerPoint.</p>
+                    <p>Anglais (très bonne maîtrise écrite et orale), Espagnol (maîtrise écrite convenable). Rédaction technique : LaTeX, Word, PowerPoint.</p>
                 </div>
             </div>
         </section>
 
         <!-- EXPÉRIENCES & RECHERCHE -->
         <section id="experiences">
-            <h2>Expériences professionnelles et recherche</h2>
+            <h2>Expériences professionnelles</h2>
 
             <!-- Exp 1 -->
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3>Ingénieur R&D - traitement du signal et data science</h3>
+                        <h3>Ingénieur R&D - Traitement du signal & Data science</h3>
                         <div class="exp-company">Wavely</div>
                     </div>
                     <div class="exp-meta">2022 — 2026<br>Lille, France</div>
                 </div>
                 <div class="exp-body">
-                    <div class="exp-text">
-                        <p>Recherche, évaluation et industrialisation de nouveaux cas d'usage de détection d'événements par capteurs acoustiques embarqués, avec intégration de modèles d'IA pour la détection et la classification.</p>
-                    </div>
+                    <p>Recherche, évaluation et industrialisation de nouveaux cas d'usage de détection d'événements par capteurs acoustiques embarqués, avec intégration de modèles d'IA pour la détection et la classification.</p>
                 </div>
             </div>
 
@@ -333,10 +327,11 @@
                     <div class="exp-meta">2020 — 2022<br>Villeneuve-d'Ascq, France</div>
                 </div>
                 <div class="exp-body">
-                    <div class="exp-text">
-                        <p>Étude d'écoulements turbulents en soufflerie par mesures LASER (PIV), caractérisation tourbillonnaire et confrontation à des modèles CFD.</p>
+                    <p>Étude d'écoulements turbulents en soufflerie par mesures LASER (PIV), caractérisation tourbillonnaire et confrontation à des modèles CFD.</p>
+                    <!-- IMAGE EN GRAND SOUS LE TEXTE -->
+                    <div class="research-img-container">
+                        <img src="image_postdoctorat.png" alt="Résultats de mesures LASER PIV - Post-doctorat LMFL" class="research-img">
                     </div>
-                    <img src="image_postdoctorat.png" alt="Recherche Post-doctorat LMFL" class="exp-img">
                 </div>
             </div>
 
@@ -344,15 +339,13 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3>Ingénieur R&D — Développement logiciel interne</h3>
+                        <h3>Ingénieur R&D — Simulation numérique</h3>
                         <div class="exp-company">SIM Engineering</div>
                     </div>
                     <div class="exp-meta">2019 — 2020<br>Lille, France</div>
                 </div>
                 <div class="exp-body">
-                    <div class="exp-text">
-                        <p>Modélisation et simulation par schémas FDTD non linéaires d'écoulements de gaz en tuyauteries industrielles.</p>
-                    </div>
+                    <p>Modélisation numérique et simulation des écoulements pulsatoires de gaz non linéaires dans les tuyauteries industrielles par schémas FDTD.</p>
                 </div>
             </div>
 
@@ -360,18 +353,19 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3>Doctorat CIFRE en acoustique</h3>
+                        <h3>Doctorat CIFRE — Acoustique & Vibrations</h3>
                         <div class="exp-company">Le Mans Université — SIM Engineering</div>
                     </div>
                     <div class="exp-meta">2016 — 2019<br>Le Mans — Lille, France</div>
                 </div>
                 <div class="exp-body">
-                    <div class="exp-text">
-                        <p><strong>Direction :</strong> J. Gilbert, F. Gautier, A. Pelat.<br>
-                        <strong>Sujet :</strong> effets non linéaires acoustiques et couplages fluide-structure dans les guides d'ondes, application à des conduites de compresseurs alternatifs.</p>
-                        <p style="margin-top: 10px;"><a href="https://theses.hal.science/tel-05580179/file/2019LEMA1015.pdf" class="pub-link" target="_blank">📄 Consulter la thèse (PDF)</a></p>
+                    <p><strong>Direction :</strong> J. Gilbert, F. Gautier, A. Pelat.<br>
+                    <strong>Sujet :</strong> effets non linéaires acoustiques et couplages fluide-structure dans les guides d'ondes, application à des conduites de compresseurs alternatifs.</p>
+                    <p><a href="https://theses.hal.science/tel-05580179/file/2019LEMA1015.pdf" class="pub-link" target="_blank">📄 Consulter le manuscrit de thèse (PDF)</a></p>
+                    <!-- IMAGE EN GRAND SOUS LE TEXTE -->
+                    <div class="research-img-container">
+                        <img src="image_these.png" alt="Modélisation des couplages fluide-structure - Thèse" class="research-img">
                     </div>
-                    <img src="image_these.png" alt="Schéma Thèse Acoustique" class="exp-img">
                 </div>
             </div>
 
@@ -385,13 +379,11 @@
                     <div class="exp-meta">2013 — 2015</div>
                 </div>
                 <div class="exp-body">
-                    <div class="exp-text">
-                        <ul style="padding-left: 20px;">
-                            <li style="margin-bottom: 8px;"><strong>Université d'Édimbourg (Écosse) :</strong> modélisation numérique et analyse expérimentale de la propagation d'ondes dans les instruments à vent. (Mars-Juillet 2015)</li>
-                            <li style="margin-bottom: 8px;"><strong>Institut Langevin (ESPCI ParisTech, Paris) :</strong> modélisation numérique et analyse expérimentale de la focalisation d'ondes (phénomène de lentille acoustique). (Juillet-Août 2014)</li>
-                            <li><strong>LAM — UPMC (Paris) :</strong> développement d'une méthode de caractérisation acoustique d'un conduit vocal. (Juin 2013)</li>
-                        </ul>
-                    </div>
+                    <ul style="padding-left: 20px;">
+                        <li style="margin-bottom: 8px;"><strong>Mars — Juillet 2015, Université d'Édimbourg :</strong> modélisation numérique et analyse expérimentale de la propagation non linéaire d'ondes dans les instruments à vent.</li>
+                        <li style="margin-bottom: 8px;"><strong>Juillet — Août 2014, Institut Langevin (ESPCI ParisTech, Paris) :</strong> modélisation numérique et analyse expérimentale de la focalisation d'ondes de surface sur des plaques isotropes (phénomène de lentille acoustique).</li>
+                        <li><strong>Juin 2013, LAM — UPMC (Paris) :</strong> développement d'une méthode non intrusive de caractérisation acoustique d'un conduit vocal, pour l'amélioration de <em>talk-box</em>.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -405,7 +397,7 @@
             </div>
             <div class="exp-item" style="margin-top: 15px;">
                 <strong>Master Recherche en acoustique</strong> — Le Mans Université <span style="float: right; color:#64748b;">2013 — 2015</span>
-                <p style="font-size: 0.9rem; color:#64748b; margin-top: 5px;">Spécialités : traitement du signal, mécanique des fluides / aéro-acoustique, vibro-acoustique, opto-acoustique, acoustique non linéaire, acoustique en fluide réel.</p>
+                <p style="font-size: 0.9rem; color:#64748b; margin-top: 5px;">Traitement du signal, mécanique des fluides / aéro-acoustique, vibro-acoustique, opto-acoustique, acoustique non linéaire, acoustique en fluide réel.</p>
             </div>
             <div class="exp-item" style="margin-top: 15px;">
                 <strong>Licence SPI — parcours acoustique</strong> — Le Mans Université <span style="float: right; color:#64748b;">2012 — 2013</span>
@@ -420,49 +412,49 @@
                 <li class="pub-item">
                     <span class="badge badge-conf">Conférence</span> 2023 — ISPIV 2023, San Diego (1er auteur)
                     <span class="pub-title">Vortex interactions between two cylinders in a turbulent boundary layer</span>
-                    <a href="https://www.researchgate.net/profile/Romain-Beauvais/..." class="pub-link" target="_blank">Lire l'article →</a>
+                    <a href="https://www.researchgate.net/profile/Romain-Beauvais/publication/377231636_Vortex_interactions_between_two_cylinders_in_a_turbulent_boundary_layer/links/659c1cff6f6e450f19d772c2/Vortex-interactions-between-two-cylinders-in-a-turbulent-boundary-layer.pdf?origin=profileOverview&_tp=eyJjb250ZXh0Ijp7InBhZ2UiOiJwcm9maWxlIiwicHJldmlvdXNQYWdlIjpudWxsLCJwb3NpdGlvbiI6InBhZ2VDb250ZW50In19" class="pub-link" target="_blank">Lire l'article →</a>
                 </li>
 
                 <li class="pub-item">
                     <span class="badge badge-conf">Conférence</span> 2023 — Forum Acusticum (1er auteur)
                     <span class="pub-title">Nonlinear acoustic modeling in waveguides: from brass instruments to industrial applications</span>
-                    <span class="pub-author">DOI: <a href="https://doi.org/10.61782/fa.2023.0061" target="_blank">10.61782/fa.2023.0061</a></span>
+                    <span class="pub-author">DOI : <a href="https://doi.org/10.61782/fa.2023.0061" target="_blank">10.61782/fa.2023.0061</a></span>
                 </li>
 
                 <li class="pub-item">
                     <span class="badge badge-conf">Conférence</span> 2022 — 23rd Australasian Fluid Mechanics Conference (co-auteur)
                     <span class="pub-title">Turbulent Kinetic Energy Budget and Dynamics of Composed Wakes in TBL</span>
-                    <span class="pub-author">Lien HAL: <a href="https://hal.science/hal-04297102/" target="_blank">hal-04297102</a></span>
+                    <span class="pub-author">Lien HAL : <a href="https://hal.science/hal-04297102/" target="_blank">hal-04297102</a></span>
                 </li>
 
                 <li class="pub-item">
                     <span class="badge badge-journal">Journal (MSSP)</span> 2020 — Mechanical Systems and Signal Processing (1er auteur)
                     <span class="pub-title">Inverse identification of the acoustic pressure inside a U-shaped pipeline based on acceleration measurements</span>
-                    <span class="pub-author">DOI: <a href="https://doi.org/10.1016/j.ymssp.2021.108226" target="_blank">10.1016/j.ymssp.2021.108226</a></span>
+                    <span class="pub-author">DOI : <a href="https://doi.org/10.1016/j.ymssp.2021.108226" target="_blank">10.1016/j.ymssp.2021.108226</a></span>
                 </li>
 
                 <li class="pub-item">
                     <span class="badge badge-conf">Conférence</span> 2019 — INTERNOISE, Madrid (1er auteur)
                     <span class="pub-title">Estimation of the sound pressure in a bent pipe from non intrusive acceleration measurements by an inverse problem procedure</span>
-                    <a href="https://www.researchgate.net/profile/Romain-Beauvais/..." class="pub-link" target="_blank">Lire l'article →</a>
+                    <a href="https://www.researchgate.net/profile/Romain-Beauvais/publication/350965496_Estimation_of_the_sound_pressure_in_a_bent_pipe_from_non_intrusive_acceleration_measurements_by_an_inverse_problem_procedure/links/60bde7e692851cb13d84b6aa/Estimation-of-the-sound-pressure-in-a-bent-pipe-from-non-intrusive-acceleration-measurements-by-an-inverse-problem-procedure.pdf" class="pub-link" target="_blank">Lire l'article →</a>
                 </li>
 
                 <li class="pub-item">
                     <span class="badge badge-conf">Conférence</span> 2018 — INTERNOISE, Chicago (1er auteur)
                     <span class="pub-title">Low and High Level Acoustic Propagation in Waveguides: Vibroacoustic Coupling in a Bent Pipe at Low Frequency</span>
-                    <a href="https://www.researchgate.net/profile/Romain-Beauvais/..." class="pub-link" target="_blank">Lire l'article →</a>
+                    <a href="https://www.researchgate.net/profile/Romain-Beauvais/publication/350965548_Low_and_High_Level_Acoustic_Propagation_in_Waveguides_Vibroacoustic_Coupling_in_a_Bent_Pipe_at_Low_Frequency/links/60bde748a6fdcc22eae4b275/Low-and-High-Level-Acoustic-Propagation-in-Waveguides-Vibroacoustic-Coupling-in-a-Bent-Pipe-at-Low-Frequency.pdf" class="pub-link" target="_blank">Lire l'article →</a>
                 </li>
 
                 <li class="pub-item">
                     <span class="badge badge-journal">Journal (APL)</span> 2014 — Applied Physics Letters (3e auteur)
                     <span class="pub-title">Experiments on Maxwell's Fish-eye dynamics in elastic plates</span>
-                    <span class="pub-author">DOI: <a href="https://doi.org/10.1063/1.4905730" target="_blank">10.1063/1.4905730</a></span>
+                    <span class="pub-author">DOI : <a href="https://doi.org/10.1063/1.4905730" target="_blank">10.1063/1.4905730</a></span>
                 </li>
 
             </ul>
         </section>
 
-        <!-- CERTIFICATIONS & INTÉRÊTS -->
+        <!-- DIVERS -->
         <section id="divers">
             <h2>Certifications et centres d'intérêt</h2>
             <p><strong>Certifications :</strong> Sécurité LASER (CERLA), Formation H0B0, Permis B, BAFA.</p>
