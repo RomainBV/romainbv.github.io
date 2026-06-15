@@ -2,7 +2,7 @@ name: Deploy CV to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Remplace par "master" si ta branche principale s'appelle master
+    branches: ["main"] # Vérifie bien si ta branche s'appelle main ou master
 
 permissions:
   contents: read
@@ -17,11 +17,11 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps:https://github.com/google/gemini-cookbook/actions/runs/13600618037/job/38025252814?pr=615#step:1:1 }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 # Les versions v4/v5 intégrées par GitHub directement ici fonctionneront nativement
+        uses: actions/checkout@v4
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -29,7 +29,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Déploie tout le dossier (ton fichier index.html)
+          path: '.' # Déploie le dossier racine contenant ton index.html
           
       - name: Deploy to GitHub Pages
         id: deployment
