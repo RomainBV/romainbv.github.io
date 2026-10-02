@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romain Beauvais | Docteur en Acoustique & Ingénieur R&D</title>
+    <!-- Police LaTeX : Computer Modern (Latin Modern) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-sans-serif.css">
     <style>
         /* --- COULEURS DU LATEX --- */
         :root {
-            --primary-color: #0E3A67;  /* Bleu Foncé */
-            --accent-color: #1B6CA8;   /* Bleu Lumineux */
-            --light-text: #4A4A4A;     /* Gris Anthracite */
-            --bg-body: #f4f6f9;
-            --bg-card: #ffffff;
+            --primary-color: #f3e9dc;  /* titres : ivoire chaud */
+            --accent-color: #d8a25e;   /* accent cuivre / ambre */
+            --gold: #c9a56a;           /* liseré doré */
+            --light-text: #d8cfc2;     /* texte courant (beige clair) */
+            --bg-body: #1a1512;        /* brun-charbon chaud */
+            --bg-card: #241d18;        /* cartes (brun profond) */
+            --bg-panel: #140f0c;       /* panneau lateral */
+            --muted: #a99a86;          /* texte secondaire / dates (taupe chaud) */
+            --border: rgba(216,162,94,0.16);  /* bordures : cuivre discret */
         }
 
         /* --- STRUCTURE GLOBALE --- */
@@ -22,10 +29,17 @@
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'CMU Serif', 'Latin Modern Roman', Georgia, serif;
             color: var(--light-text);
             background-color: var(--bg-body);
             line-height: 1.6;
+        }
+
+        /* Titres : serif elegante */
+        h1, h2, h3, .exp-title h3 {
+            font-family: 'CMU Serif', 'Latin Modern Roman', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: 0.2px;
         }
 
         .container {
@@ -39,8 +53,9 @@
 
         /* --- BARRE LATÉRALE (PROFIL & CONTACT) --- */
         aside {
-            background-color: var(--primary-color);
-            color: white;
+            background: linear-gradient(160deg, #1e1713 0%, #140f0c 100%);
+            color: #f1e7d9;
+            border: 1px solid var(--border);
             padding: 30px 20px;
             border-radius: 12px;
             height: fit-content;
@@ -52,7 +67,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-color: #ddd;
+            background-color: #140f0c;
             margin: 0 auto 20px auto;
             display: block;
             border: 4px solid var(--accent-color);
@@ -86,7 +101,7 @@
         }
 
         .contact-info a {
-            color: #93c5fd;
+            color: var(--accent-color);
             text-decoration: none;
         }
 
@@ -104,15 +119,18 @@
             padding: 30px;
             border-radius: 12px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.28);
         }
 
         h2 {
             color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
+            font-size: 1.45rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 10px;
         }
 
         /* --- GRILLE DE COMPÉTENCES --- */
@@ -122,8 +140,16 @@
             gap: 20px;
         }
 
+        .skill-box {
+            background: rgba(216,162,94,0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
         .skill-box h4 {
             color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 0.2px;
             margin-bottom: 8px;
         }
 
@@ -145,19 +171,20 @@
         }
 
         .exp-title h3 {
-            color: #1e293b;
+            color: #f1e7d9;
             font-size: 1.2rem;
         }
 
         .exp-company {
             color: var(--accent-color);
             font-weight: 600;
+            letter-spacing: 0.2px;
         }
 
         .exp-meta {
             text-align: right;
             font-size: 0.9rem;
-            color: #64748b;
+            color: var(--muted);
         }
 
         .exp-body {
@@ -179,7 +206,7 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            background-color: #eaeaea;
+            background-color: rgba(216,162,94,0.06);
             display: inline-block;
         }
 
@@ -207,12 +234,12 @@
             text-transform: uppercase;
         }
 
-        .badge-journal { background-color: #dcfce7; color: #166534; }
-        .badge-conf { background-color: #dbeafe; color: #1e40af; }
+        .badge-journal { background-color: rgba(205,164,92,0.16); color: #e6c07a; border: 1px solid rgba(205,164,92,0.35); }
+        .badge-conf    { background-color: rgba(188,112,78,0.18); color: #e2a07a; border: 1px solid rgba(188,112,78,0.38); }
 
         .pub-title {
             font-weight: bold;
-            color: #1e293b;
+            color: #f1e7d9;
             display: block;
             margin-top: 4px;
         }
@@ -221,6 +248,9 @@
             font-size: 0.9rem;
             font-style: italic;
         }
+
+        main a { color: var(--accent-color); text-decoration: none; }
+        main a:hover { text-decoration: underline; }
 
         .pub-link {
             color: var(--accent-color);
@@ -273,30 +303,30 @@
         <!-- PROFIL -->
         <section id="profil">
                     <h2>Profil</h2>
-                    <p>Docteur en acoustique avec expérience en R&D, modélisation multiphysique et simulation numérique. Expertise en propagation d'ondes, couplages fluide-structure, turbulences, traitement du signal et mesures LASER (PIV). Mon objectif est de contribuer à des projets d'ingénierie à fort contenu scientifique, du modèle physique à la validation expérimentale.</p>
+                    <p>Docteur en acoustique avec expérience en R&D, modélisation multiphysique et simulation numérique. Expertise en propagation d'ondes, couplages fluide-structure, turbulences, traitement du signal et mesures LASER (PIV). Je développe également des solveurs de <strong>synthèse sonore par modèle physique</strong> (propagation non linéaire dans les instruments à vent). Mon objectif est de contribuer à des projets d'ingénierie à fort contenu scientifique, du modèle physique à la validation expérimentale.</p>
                     
-                    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(14, 58, 103, 0.2);">
+                    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(148,163,184,0.25);">
                         <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 15px; font-size: 1rem;">
                             Approche transverse pour intervenir sur l'ensemble du cycle technique d'un produit, alliant expertise théorique et validation in-situ :
                         </p>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
                             
-                            <div style="background: rgba(27, 108, 168, 0.04); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                            <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
                                 <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Expertise Théorique &amp; Modélisation</strong>
                                 <span style="font-size: 0.9rem; color: var(--light-text);">
                                     Physique des ondes et modélisation, traitement du signal avancé, extraction de features et déploiement de modèles prédictifs.
                                 </span>
                             </div>
         
-                            <div style="background: rgba(27, 108, 168, 0.04); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                            <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
                                 <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Compétences Expérimentales &amp; Essais</strong>
                                 <span style="font-size: 0.9rem; color: var(--light-text);">
                                     Essais et mesures, analyse de données expérimentales, validation et qualification.
                                 </span>
                             </div>
         
-                            <div style="background: rgba(27, 108, 168, 0.04); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                            <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
                                 <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Gestion de Projets &amp; Interfaces</strong>
                                 <span style="font-size: 0.9rem; color: var(--light-text);">
                                     Gestion de projets techniques et interactions constantes avec les équipes de production et R&D.
@@ -313,19 +343,84 @@
             <div class="skills-grid">
                 <div class="skill-box">
                     <h4>Domaines d'expertise</h4>
-                    <p>Acoustique, vibrations, turbulences, traitement du signal, instrumentation LASER.</p>
+                    <p>Acoustique, vibrations, turbulences, traitement du signal, instrumentation LASER, synthèse sonore par modèle physique (instruments à vent).</p>
                 </div>
                 <div class="skill-box">
                     <h4>Calcul scientifique & Data</h4>
-                    <p>Python, Matlab, SQLite, LabVIEW, Excel.</p>
+                    <p>Python (NumPy, pandas, Numba, Pydantic), C/C++ (pybind11), SQLite, Matlab, LabVIEW, Excel.</p>
                 </div>
                 <div class="skill-box">
                     <h4>Simulation & CAO</h4>
-                    <p>COMSOL, AutoCAD 2D-3D, SolidWorks, OnShape.</p>
+                    <p><strong>Logiciels :</strong> COMSOL, AutoCAD 2D-3D, SolidWorks, OnShape.<br>
+                       <strong>Modélisation R&D :</strong> schémas FDTD, TVD/WENO (Euler quasi-1D, propagation non linéaire).</p>
                 </div>
                 <div class="skill-box">
                     <h4>Langues & Rédaction</h4>
                     <p>Anglais (très bonne maîtrise écrite et orale), Espagnol (maîtrise écrite convenable). Rédaction technique : LaTeX, Word, PowerPoint.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJET PERSONNEL — MODÉLISATION DE CUIVRES -->
+        <section id="projet-cuivres">
+            <h2>Projet de recherche personnel</h2>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Synthèse sonore de cuivres par modèle physique</h3>
+                        <div class="exp-company">SimTimePulse — projet personnel</div>
+                    </div>
+                    <div class="exp-meta">2025 — 2026<br>Lille, France</div>
+                </div>
+                <div class="exp-body">
+                    <div style="background: rgba(201,165,106,0.06); padding: 16px 18px; border-radius: 10px; border-left: 3px solid var(--gold); margin-bottom: 15px;">
+                        <strong style="color: var(--primary-color); font-size: 1.05rem;">ReedLab — un laboratoire virtuel de création sonore</strong>
+                        <p style="font-size: 0.92rem; color: var(--light-text); margin-top: 6px; margin-bottom: 0;">
+                            ReedLab synthétise le son des instruments à vent directement à partir de partitions <strong>Guitar Pro</strong>. L'objectif : offrir une alternative à la génération MIDI des cuivres, souvent encore très limitée en réalisme, en produisant un son issu de la physique même de l'instrument.
+                        </p>
+                        <p style="font-size: 0.92rem; color: var(--light-text); margin-top: 8px; margin-bottom: 0;">
+                            Contrairement aux approches de référence fondées sur l'hypothèse <em>faiblement non linéaire</em> (équation de Burgers généralisée), <strong>ReedLab résout les équations d'Euler complètes</strong> : la non-linéarité n'est pas bridée. Cela ouvre la voie à un instrument virtuel exploitable au-delà du jeu réaliste — un véritable atelier d'exploration et de création sonore.
+                        </p>
+                    </div>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 6px;"><strong>Physique (ReedLab) :</strong> Euler complet (non-linéarité <em>non bridée</em>, pas d'hypothèse faiblement non linéaire) &rarr; brillance « cuivrée » jusqu'aux fortissimi ; pertes viscothermiques en &radic;f, rayonnement de pavillon (Levine–Schwinger), lèvre auto-oscillante, routage des pistons, coulisse de trombone (longueur variable) et sourdine (Harmon).</li>
+                        <li style="margin-bottom: 6px;"><strong>Partition &rarr; son :</strong> conversion Guitar Pro (.gp5), gestes déduits de la partition (attaque, legato/staccato, reprises de souffle, vibrato, souffle de jet).</li>
+                        <li style="margin-bottom: 6px;"><strong>Effets avancés :</strong> glissando de trombone (coulisse mobile), sourdine Harmon (tubes parallèles), réverbération de pièce ; calibration de perce (modèles temporel et fréquentiel) pour l'accord pavillon / coulisses / lèvres.</li>
+                        <li style="margin-bottom: 6px;"><strong>Implémentation :</strong> Python + Numba (noyau JIT fusionné), configuration YAML/Pydantic, export WAV.</li>
+                    </ul>
+                    <p style="font-size: 0.9rem; color: var(--light-text); margin-top: 12px;">Prolonge mes travaux de thèse (FDTD non linéaire en conduits) et mon stage à l'Université d'Édimbourg sur la propagation non linéaire dans les instruments à vent.</p>
+
+                    <h4 style="color: var(--accent-color); margin-top: 18px;">Exemples</h4>
+                    <div class="research-img-container" style="display: flex; flex-direction: column; gap: 16px; align-items: center; margin-top: 10px;">
+                        <!-- Depose tes fichiers dans le dossier du portfolio et decommente les lignes utiles -->
+
+                        <!-- Audio (WAV/MP3) : ex. rendu d'Amazing Grace -->
+                        <!--
+                        <div style="width: 100%; max-width: 520px;">
+                            <p style="font-size: 0.9rem; color: var(--light-text); margin-bottom: 6px;">Trompette — Amazing Grace (rendu simulé)</p>
+                            <audio controls style="width: 100%;">
+                                <source src="cuivres_amazing_grace.mp3" type="audio/mpeg">
+                                <source src="cuivres_amazing_grace.wav" type="audio/wav">
+                                Votre navigateur ne supporte pas la lecture audio.
+                            </audio>
+                        </div>
+                        -->
+
+                        <!-- Image : ex. resonances mesurees ou profil de perce -->
+                        <!--
+                        <h4 style="color: var(--accent-color); margin-top: 6px;">Résonances mesurées / profil de perce</h4>
+                        <img src="cuivres_resonances.png" alt="Résonances mesurées / profil de perce" class="research-img">
+                        -->
+
+                        <!-- Video : ex. glissando de trombone -->
+                        <!--
+                        <h4 style="color: var(--accent-color); margin-top: 6px;">Glissando de trombone (coulisse mobile)</h4>
+                        <video controls loop muted playsinline class="research-img">
+                            <source src="cuivres_trombone_glissando.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de cette vidéo.
+                        </video>
+                        -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -346,14 +441,14 @@
                     <p>Recherche, évaluation et industrialisation de nouveaux cas d'usage de détection d'événements par capteurs acoustiques embarqués, avec intégration de modèles d'IA pour la détection et la classification.</p>
                     
                     <div class="research-img-container" style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 20px;">
-                        <h4 style="color: var(--accent-color); margin-top: 10px;">Gaz leak detection & localization</h4>
+                        <h4 style="color: var(--accent-color); margin-top: 10px;">Detection &amp; localisation de fuites de gaz</h4>
                         <img src="total.png" alt="total" class="research-img">
                         
-                        <h4 style="color: var(--accent-color); margin-top: 10px;">Anomaly detection</h4>
+                        <h4 style="color: var(--accent-color); margin-top: 10px;">Détection d'anomalies</h4>
                         <img src="senalia.png" alt="Anomaly detection" class="research-img">
                         <img src="safran.png" alt="Analyse Safran" class="research-img">
                         
-                        <h4 style="color: var(--accent-color); margin-top: 10px;">Drone detection &amp; Localisation</h4>
+                        <h4 style="color: var(--accent-color); margin-top: 10px;">Détection &amp; localisation de drones</h4>
                         <video autoplay loop muted playsinline class="research-img">
                             <source src="drone.mp4" type="video/mp4">
                             Votre navigateur ne supporte pas la lecture de cette vidéo.
@@ -371,7 +466,7 @@
                     <div class="exp-meta">Sept. 2022 — Avr. 2023<br>Lille, France</div>
                 </div>
                 <div class="exp-body">
-                    <p>Conception et animation d'un module d'introduction à l'acoustique de 32 heures pour les étudiants en Sound Design (Studio M). Enseignement axé sur la physique du son, les phénomènes acoustiques, la perception &amp; psychoacoustique, l'acoustique des salles et l'électroacoustique.</p>
+                    <p>Conception et animation d'un module  de 32 heures d'introduction à l'acoustique pour les étudiants en Sound Design (Studio M). Enseignement axé sur la physique du son, les phénomènes acoustiques, la perception &amp; psychoacoustique, l'acoustique des salles et l'électroacoustique.</p>
                 </div>
             </div>
 
@@ -462,14 +557,14 @@
         <section id="formation">
             <h2>Formation</h2>
             <div class="exp-item">
-                <strong>Doctorat en acoustique</strong> — Le Mans Université <span style="float: right; color:#64748b;">Juin 2019</span>
+                <strong>Doctorat en acoustique</strong> — Le Mans Université <span style="float: right; color:var(--muted);">Juin 2019</span>
             </div>
             <div class="exp-item" style="margin-top: 15px;">
-                <strong>Master Recherche en acoustique</strong> — Le Mans Université <span style="float: right; color:#64748b;">2013 — 2015</span>
-                <p style="font-size: 0.9rem; color:#64748b; margin-top: 5px;">Traitement du signal, mécanique des fluides / aéro-acoustique, vibro-acoustique, opto-acoustique, acoustique non linéaire, acoustique en fluide réel.</p>
+                <strong>Master Recherche en acoustique</strong> — Le Mans Université <span style="float: right; color:var(--muted);">2013 — 2015</span>
+                <p style="font-size: 0.9rem; color:var(--muted); margin-top: 5px;">Traitement du signal, mécanique des fluides / aéro-acoustique, vibro-acoustique, opto-acoustique, acoustique non linéaire, acoustique en fluide réel.</p>
             </div>
             <div class="exp-item" style="margin-top: 15px;">
-                <strong>Licence SPI — parcours acoustique</strong> — Le Mans Université <span style="float: right; color:#64748b;">2012 — 2013</span>
+                <strong>Licence SPI — parcours acoustique</strong> — Le Mans Université <span style="float: right; color:var(--muted);">2012 — 2013</span>
             </div>
         </section>
 
