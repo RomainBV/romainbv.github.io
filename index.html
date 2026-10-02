@@ -210,6 +210,20 @@
             display: inline-block;
         }
 
+        /* --- FILTRE VINTAGE ÉLÉGANT SUR LES IMAGES ET VIDÉOS --- */
+        .profile-img, 
+        .research-img, 
+        .exp-body img {
+            filter: sepia(0.2) contrast(1.05) saturate(0.85);
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .profile-img:hover, 
+        .research-img:hover, 
+        .exp-body img:hover {
+            filter: sepia(0) contrast(1) saturate(1);
+        }
+
         /* --- LISTE DES PUBLICATIONS --- */
         .pub-list {
             list-style: none;
@@ -302,40 +316,40 @@
         
         <!-- PROFIL -->
         <section id="profil">
-                    <h2>Profil</h2>
-                    <p>Docteur en acoustique avec expérience en R&D, modélisation multiphysique et simulation numérique. Expertise en propagation d'ondes, couplages fluide-structure, turbulences, traitement du signal et mesures LASER (PIV). Je développe également des solveurs de <strong>synthèse sonore par modèle physique</strong> (propagation non linéaire dans les instruments à vent). Mon objectif est de contribuer à des projets d'ingénierie à fort contenu scientifique, du modèle physique à la validation expérimentale.</p>
+            <h2>Profil</h2>
+            <p>Docteur en acoustique avec expérience en R&D, modélisation multiphysique et simulation numérique. Expertise en propagation d'ondes, couplages fluide-structure, turbulences, traitement du signal et mesures LASER (PIV). Je développe également des solveurs de <strong>synthèse sonore par modèle physique</strong> (propagation non linéaire dans les instruments à vent). Mon objectif est de contribuer à des projets d'ingénierie à fort contenu scientifique, du modèle physique à la validation expérimentale.</p>
+            
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(148,163,184,0.25);">
+                <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 15px; font-size: 1rem;">
+                    Approche transverse pour intervenir sur l'ensemble du cycle technique d'un produit, alliant expertise théorique et validation in-situ :
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
                     
-                    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(148,163,184,0.25);">
-                        <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 15px; font-size: 1rem;">
-                            Approche transverse pour intervenir sur l'ensemble du cycle technique d'un produit, alliant expertise théorique et validation in-situ :
-                        </p>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
-                            
-                            <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
-                                <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Expertise Théorique &amp; Modélisation</strong>
-                                <span style="font-size: 0.9rem; color: var(--light-text);">
-                                    Physique des ondes et modélisation, traitement du signal avancé, extraction de features et déploiement de modèles prédictifs.
-                                </span>
-                            </div>
-        
-                            <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
-                                <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Compétences Expérimentales &amp; Essais</strong>
-                                <span style="font-size: 0.9rem; color: var(--light-text);">
-                                    Essais et mesures, analyse de données expérimentales, validation et qualification.
-                                </span>
-                            </div>
-        
-                            <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
-                                <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Gestion de Projets &amp; Interfaces</strong>
-                                <span style="font-size: 0.9rem; color: var(--light-text);">
-                                    Gestion de projets techniques et interactions constantes avec les équipes de production et R&D.
-                                </span>
-                            </div>
-        
-                        </div>
+                    <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                        <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Expertise Théorique &amp; Modélisation</strong>
+                        <span style="font-size: 0.9rem; color: var(--light-text);">
+                            Physique des ondes et modélisation, traitement du signal avancé, extraction de features et déploiement de modèles prédictifs.
+                        </span>
                     </div>
-                </section>
+
+                    <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                        <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Compétences Expérimentales &amp; Essais</strong>
+                        <span style="font-size: 0.9rem; color: var(--light-text);">
+                            Essais et mesures, analyse de données expérimentales, validation et qualification.
+                        </span>
+                    </div>
+
+                    <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                        <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;">Gestion de Projets &amp; Interfaces</strong>
+                        <span style="font-size: 0.9rem; color: var(--light-text);">
+                            Gestion de projets techniques et interactions constantes avec les équipes de production et R&D.
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <!-- COMPÉTENCES -->
         <section id="competences">
@@ -394,34 +408,6 @@
 
                     <h4 style="color: var(--accent-color); margin-top: 18px;">Exemples</h4>
                     <div class="research-img-container" style="display: flex; flex-direction: column; gap: 16px; align-items: center; margin-top: 10px;">
-                        <!-- Depose tes fichiers dans le dossier du portfolio et decommente les lignes utiles -->
-
-                        <!-- Audio (WAV/MP3) : ex. rendu d'Amazing Grace -->
-                        <!--
-                        <div style="width: 100%; max-width: 520px;">
-                            <p style="font-size: 0.9rem; color: var(--light-text); margin-bottom: 6px;">Trompette — Amazing Grace (rendu simulé)</p>
-                            <audio controls style="width: 100%;">
-                                <source src="cuivres_amazing_grace.mp3" type="audio/mpeg">
-                                <source src="cuivres_amazing_grace.wav" type="audio/wav">
-                                Votre navigateur ne supporte pas la lecture audio.
-                            </audio>
-                        </div>
-                        -->
-
-                        <!-- Image : ex. resonances mesurees ou profil de perce -->
-                        <!--
-                        <h4 style="color: var(--accent-color); margin-top: 6px;">Résonances mesurées / profil de perce</h4>
-                        <img src="cuivres_resonances.png" alt="Résonances mesurées / profil de perce" class="research-img">
-                        -->
-
-                        <!-- Video : ex. glissando de trombone -->
-                        <!--
-                        <h4 style="color: var(--accent-color); margin-top: 6px;">Glissando de trombone (coulisse mobile)</h4>
-                        <video controls loop muted playsinline class="research-img">
-                            <source src="cuivres_trombone_glissando.mp4" type="video/mp4">
-                            Votre navigateur ne supporte pas la lecture de cette vidéo.
-                        </video>
-                        -->
                     </div>
                 </div>
             </div>
@@ -553,7 +539,7 @@
                     </ul>
                 </div>
             </div>
-        </section> ```
+        </section>
 
         <!-- FORMATION -->
         <section id="formation">
@@ -634,13 +620,7 @@
     </main>
 </div>
 
-</body>
-</html>
-
-    </main>
-</div>
-<script data-goatcounter="https://romainbv.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://romainbv.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
