@@ -58,17 +58,15 @@
 
         /* --- SÉLECTEUR DE LANGUE --- */
         .lang-switch {
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            z-index: 1000;
             display: flex;
+            justify-content: center;
             gap: 2px;
-            background: var(--bg-card);
+            width: fit-content;
+            margin: 0 auto 22px auto;
+            background: rgba(216,162,94,0.08);
             border: 1px solid var(--border);
             border-radius: 999px;
             padding: 4px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.35);
         }
         .lang-switch button {
             font-family: 'CMU Sans Serif', 'Latin Modern Sans', sans-serif;
@@ -339,12 +337,6 @@
 </head>
 <body>
 
-<!-- SÉLECTEUR DE LANGUE -->
-<div class="lang-switch" role="group" aria-label="Language / Langue">
-    <button type="button" data-setlang="fr">FR</button>
-    <button type="button" data-setlang="en">EN</button>
-</div>
-
 <div class="container">
 
     <!-- BARRE LATÉRALE -->
@@ -355,7 +347,13 @@
             <span class="lang-fr">Docteur en Acoustique<br>R&D Simulation, Mesures &amp; Modélisation</span>
             <span class="lang-en">Ph.D. in Acoustics<br>R&D Simulation, Measurement &amp; Modeling</span>
         </div>
-        
+
+        <!-- SÉLECTEUR DE LANGUE -->
+        <div class="lang-switch" role="group" aria-label="Language / Langue">
+            <button type="button" data-setlang="fr">FR</button>
+            <button type="button" data-setlang="en">EN</button>
+        </div>
+
         <ul class="contact-info">
             <li>📍 37 rue Jeanne d'Arc,<br>59350 Saint-André-lez-Lille</li>
             <li>📞 +33 6 88 11 96 04</li>
