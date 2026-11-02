@@ -16,14 +16,14 @@
         /* --- COULEURS DU LATEX --- */
         :root {
             --primary-color: #f3e9dc;  /* titres : ivoire chaud */
-            --accent-color: #d8a25e;   /* accent cuivre / ambre */
-            --gold: #c9a56a;           /* liseré doré */
+            --accent-color: #cbb07e;   /* accent or champagne */
+            --gold: #cbb07e;           /* lisere champagne */
             --light-text: #d8cfc2;     /* texte courant (beige clair) */
             --bg-body: #1a1512;        /* brun-charbon chaud */
-            --bg-card: #241d18;        /* cartes (brun profond) */
+            --bg-card: #2e2419;        /* cartes (brun espresso) */
             --bg-panel: #140f0c;       /* panneau lateral */
-            --muted: #a99a86;          /* texte secondaire / dates (taupe chaud) */
-            --border: rgba(216,162,94,0.16);  /* bordures : cuivre discret */
+            --muted: #b7a88e;          /* texte secondaire / dates (taupe) */
+            --border: rgba(203,176,126,0.16);  /* bordures : cuivre discret */
         }
 
         /* --- STRUCTURE GLOBALE --- */
@@ -63,7 +63,7 @@
             gap: 2px;
             width: fit-content;
             margin: 0 auto 22px auto;
-            background: rgba(216,162,94,0.08);
+            background: rgba(203,176,126,0.08);
             border: 1px solid var(--border);
             border-radius: 999px;
             padding: 4px;
@@ -183,7 +183,7 @@
         }
 
         .skill-box {
-            background: rgba(216,162,94,0.04);
+            background: rgba(203,176,126,0.04);
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 16px 18px;
@@ -248,7 +248,7 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            background-color: rgba(216,162,94,0.06);
+            background-color: rgba(203,176,126,0.06);
             display: inline-block;
         }
 
@@ -381,7 +381,7 @@
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
                     
-                    <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                    <div style="background: rgba(203,176,126,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
                         <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;"><span class="lang-fr">Expertise Théorique &amp; Modélisation</span><span class="lang-en">Theory &amp; Modeling</span></strong>
                         <span class="lang-fr" style="font-size: 0.9rem; color: var(--light-text);">
                             Physique des ondes et modélisation, traitement du signal avancé, extraction de features et déploiement de modèles prédictifs.
@@ -391,7 +391,7 @@
                         </span>
                     </div>
 
-                    <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                    <div style="background: rgba(203,176,126,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
                         <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;"><span class="lang-fr">Compétences Expérimentales &amp; Essais</span><span class="lang-en">Experimental Skills &amp; Testing</span></strong>
                         <span class="lang-fr" style="font-size: 0.9rem; color: var(--light-text);">
                             Essais et mesures, analyse de données expérimentales, validation et qualification.
@@ -401,7 +401,7 @@
                         </span>
                     </div>
 
-                    <div style="background: rgba(216,162,94,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
+                    <div style="background: rgba(203,176,126,0.05); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-color);">
                         <strong style="color: var(--primary-color); display: block; margin-bottom: 5px;"><span class="lang-fr">Gestion de Projets &amp; Interfaces</span><span class="lang-en">Project Management &amp; Interfaces</span></strong>
                         <span class="lang-fr" style="font-size: 0.9rem; color: var(--light-text);">
                             Gestion de projets techniques et interactions constantes avec les équipes de production et R&D.
@@ -447,41 +447,47 @@
             </div>
         </section>
 
-        <!-- PROJET PERSONNEL — MODÉLISATION DE CUIVRES -->
+        <!-- PROJET PERSONNEL - MODÉLISATION DE CUIVRES -->
         <section id="projet-cuivres">
             <h2><span class="lang-fr">Projet de recherche personnel</span><span class="lang-en">Personal research project</span></h2>
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3><span class="lang-fr">Synthèse sonore de cuivres par modèle physique</span><span class="lang-en">Physical-modeling sound synthesis of brass instruments</span></h3>
-                        <div class="exp-company"><span class="lang-fr">ReedLab — projet personnel</span><span class="lang-en">ReedLab — personal project</span></div>
+                        <h3><span class="lang-fr">Synthèse sonore de cuivres et bois par modèle physique</span><span class="lang-en">Physical-modeling sound synthesis of brass &amp; woodwind instruments</span></h3>
+                        <div class="exp-company"><span class="lang-fr">Reed&amp;Brass Lab - projet personnel</span><span class="lang-en">Reed&amp;Brass Lab - personal project</span></div>
                     </div>
-                    <div class="exp-meta">2025 — 2026<br>Lille, France</div>
+                    <div class="exp-meta">2025 - 2026<br>Lille, France</div>
                 </div>
                 <div class="exp-body">
-                    <div style="background: rgba(201,165,106,0.06); padding: 16px 18px; border-radius: 10px; border-left: 3px solid var(--gold); margin-bottom: 15px;">
-                        <strong style="color: var(--primary-color); font-size: 1.05rem;"><span class="lang-fr">ReedLab — un laboratoire virtuel de création sonore</span><span class="lang-en">ReedLab — a virtual sound-creation lab</span></strong>
+                    <div style="background: rgba(203,176,126,0.06); padding: 16px 18px; border-radius: 10px; border-left: 3px solid var(--gold); margin-bottom: 15px;">
+                        <strong style="color: var(--primary-color); font-size: 1.05rem;"><span class="lang-fr">Reed&amp;Brass Lab - des cuivres et des bois joués virtuellement</span><span class="lang-en">Reed&amp;Brass Lab - brass &amp; woodwinds played virtually</span></strong>
                         <p class="lang-fr" style="font-size: 0.92rem; color: var(--light-text); margin-top: 6px; margin-bottom: 0;">
-                            ReedLab synthétise le son des instruments à vent directement à partir de partitions <strong>Guitar Pro</strong>. L'objectif : offrir une alternative à la génération MIDI des cuivres, souvent encore très limitée en réalisme, en produisant un son issu de la physique même de l'instrument.
+                            <strong>L'idée :</strong> faire jouer des <strong>cuivres et des bois</strong> (ex. : trompette, cor, trombone, clarinette, saxophone…) de façon <strong>virtuelle</strong>, non pas en rejouant un échantillon enregistré, mais en <strong>reproduisant les mécanismes physiques réels</strong> par lesquels l'instrumentiste produit le son (souffle, lèvres ou anche, résonance du tube, pavillon), à partir d'une simple <strong>partition numérique</strong>.
                         </p>
                         <p class="lang-en" style="font-size: 0.92rem; color: var(--light-text); margin-top: 6px; margin-bottom: 0;">
-                            ReedLab synthesizes the sound of wind instruments directly from <strong>Guitar Pro</strong> scores. The goal: to offer an alternative to MIDI generation of brass — still often very limited in realism — by producing sound derived from the instrument's own physics.
+                            <strong>The idea:</strong> to play <strong>brass and woodwind instruments</strong> (e.g. trumpet, horn, trombone, clarinet, saxophone…) <strong>virtually</strong>: not by replaying a recorded sample, but by <strong>reproducing the real physical mechanisms</strong> through which a player produces the sound (breath, lips or reed, tube resonance, bell), from a simple <strong>digital score</strong>.
                         </p>
                         <p class="lang-fr" style="font-size: 0.92rem; color: var(--light-text); margin-top: 8px; margin-bottom: 0;">
-                            Contrairement aux approches de référence fondées sur l'hypothèse <em>faiblement non linéaire</em> (équation de Burgers généralisée), <strong>ReedLab résout les équations d'Euler complètes</strong> : la non-linéarité n'est pas bridée. Cela ouvre la voie à un instrument virtuel exploitable au-delà du jeu réaliste — un véritable atelier d'exploration et de création sonore.
+                            <strong>Le but :</strong> retrouver les <strong>aspérités du jeu réel</strong>, justement ce qui rend le son MIDI d'un cuivre ou d'un bois trop lisse : attaques, transitions entre les notes (pistons, coulisses, clés…), timbre qui évolue avec la nuance, bruit de souffle filtré par la perce. Je souhaite aussi rendre fidèlement l'effet des <strong>techniques de jeu sur le timbre</strong> (sourdine placée dans le pavillon d'une trompette, main dans celui d'un cor…), tout en respectant les effets notés sur la partition : vibrato, trémolo, fade in/out, glissando, dynamique de jeu…
                         </p>
                         <p class="lang-en" style="font-size: 0.92rem; color: var(--light-text); margin-top: 8px; margin-bottom: 0;">
-                            Unlike reference approaches based on the <em>weakly nonlinear</em> assumption (generalized Burgers equation), <strong>ReedLab solves the full Euler equations</strong>: nonlinearity is not capped. This opens the way to a virtual instrument usable beyond realistic playing — a genuine workshop for sound exploration and creation.
+                            <strong>The goal:</strong> to recover the <strong>textures of real playing</strong>, exactly what makes MIDI brass or woodwind sound too smooth: attacks, transitions between notes (valves, slides, keys…), timbre shifting with dynamics, breath noise filtered by the bore. I also want to faithfully render how <strong>playing techniques shape timbre</strong> (a mute placed in a trumpet's bell, a hand in a horn's bell…), while honouring the effects written in the score: vibrato, tremolo, fade in/out, glissando, playing dynamics…
+                        </p>
+                        <p class="lang-fr" style="font-size: 1rem; color: var(--accent-color); font-weight: 600; margin-top: 12px; margin-bottom: 0;">
+                            Bâtir son propre laboratoire de création sonore pour les instruments à vent.
+                        </p>
+                        <p class="lang-en" style="font-size: 1rem; color: var(--accent-color); font-weight: 600; margin-top: 12px; margin-bottom: 0;">
+                            Building his own sound-creation lab for wind instruments.
                         </p>
                     </div>
                     <ul class="lang-fr" style="padding-left: 20px; margin-top: 10px;">
-                        <li style="margin-bottom: 6px;"><strong>Physique (ReedLab) :</strong> Euler complet (non-linéarité <em>non bridée</em>, pas d'hypothèse faiblement non linéaire) &rarr; brillance « cuivrée » jusqu'aux fortissimi ; pertes viscothermiques en &radic;f, rayonnement de pavillon (Levine–Schwinger), lèvre auto-oscillante, routage des pistons, coulisse de trombone (longueur variable) et sourdine (Harmon).</li>
+                        <li style="margin-bottom: 6px;"><strong>Physique (Reed&amp;Brass Lab) :</strong> Euler complet (non-linéarité <em>non bridée</em>, pas d'hypothèse faiblement non linéaire) &rarr; brillance « cuivrée » jusqu'aux fortissimi ; pertes viscothermiques en &radic;f, rayonnement de pavillon (Levine-Schwinger), lèvre auto-oscillante, routage des pistons, coulisse de trombone (longueur variable) et sourdine (Harmon).</li>
                         <li style="margin-bottom: 6px;"><strong>Partition &rarr; son :</strong> conversion Guitar Pro (.gp5), gestes déduits de la partition (attaque, legato/staccato, reprises de souffle, vibrato, souffle de jet).</li>
                         <li style="margin-bottom: 6px;"><strong>Effets avancés :</strong> glissando de trombone (coulisse mobile), sourdine Harmon (tubes parallèles), réverbération de pièce ; calibration de perce (modèles temporel et fréquentiel) pour l'accord pavillon / coulisses / lèvres.</li>
                         <li style="margin-bottom: 6px;"><strong>Implémentation :</strong> Python + Numba (noyau JIT fusionné), configuration YAML/Pydantic, export WAV.</li>
                     </ul>
                     <ul class="lang-en" style="padding-left: 20px; margin-top: 10px;">
-                        <li style="margin-bottom: 6px;"><strong>Physics (ReedLab):</strong> full Euler (<em>uncapped</em> nonlinearity, no weakly-nonlinear assumption) &rarr; "brassy" brightness up to fortissimo; &radic;f viscothermal losses, bell radiation (Levine–Schwinger), self-oscillating lip, piston routing, trombone slide (variable length) and mute (Harmon).</li>
+                        <li style="margin-bottom: 6px;"><strong>Physics (Reed&amp;Brass Lab):</strong> full Euler (<em>uncapped</em> nonlinearity, no weakly-nonlinear assumption) &rarr; "brassy" brightness up to fortissimo; &radic;f viscothermal losses, bell radiation (Levine-Schwinger), self-oscillating lip, piston routing, trombone slide (variable length) and mute (Harmon).</li>
                         <li style="margin-bottom: 6px;"><strong>Score &rarr; sound:</strong> Guitar Pro (.gp5) conversion, gestures inferred from the score (attack, legato/staccato, breath marks, vibrato, jet noise).</li>
                         <li style="margin-bottom: 6px;"><strong>Advanced effects:</strong> trombone glissando (moving slide), Harmon mute (parallel tubes), room reverberation; bore calibration (time- and frequency-domain models) for tuning bell / slides / lips.</li>
                         <li style="margin-bottom: 6px;"><strong>Implementation:</strong> Python + Numba (fused JIT kernel), YAML/Pydantic configuration, WAV export.</li>
@@ -494,10 +500,10 @@
 
                         <!-- Partition source -->
                         <p class="lang-fr" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 2px; text-align: center;">
-                            Partition source — <em>Amazing Grace</em> (2 voix), Amazing-grace_2-voices.gp5
+                            Partition source - <em>Amazing Grace</em> (2 voix), Amazing-grace_2-voices.gp5
                         </p>
                         <p class="lang-en" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 2px; text-align: center;">
-                            Source score — <em>Amazing Grace</em> (2 voices), Amazing-grace_2-voices.gp5
+                            Source score - <em>Amazing Grace</em> (2 voices), Amazing-grace_2-voices.gp5
                         </p>
                         <img src="ReedLab/Amazing-grace_partition.png" alt="Partition Amazing Grace (2 voix)" class="research-img">
                         <p style="font-size: 0.9rem; margin-top: 2px; text-align: center;">
@@ -506,7 +512,7 @@
 
                         <!-- Extraits : meme partition, trois nuances de jeu -->
                         <p style="font-size: 0.95rem; color: var(--primary-color); margin-top: 6px; margin-bottom: 0; text-align: center;">
-                            <span class="lang-fr">Rendu ReedLab — trois nuances de jeu</span><span class="lang-en">ReedLab render — three dynamic levels</span>
+                            <span class="lang-fr">Rendu Reed&amp;Brass Lab - trois nuances de jeu</span><span class="lang-en">Reed&amp;Brass Lab render - three dynamic levels</span>
                         </p>
                         <div style="width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 14px;">
                             <div>
@@ -531,6 +537,37 @@
                                 </audio>
                             </div>
                         </div>
+
+                        <!-- It Never Entered My Mind : trompette avec / sans sourdine -->
+                        <div style="width: 100%; border-top: 1px solid var(--border); margin-top: 8px; padding-top: 18px;"></div>
+                        <p style="font-size: 0.95rem; color: var(--primary-color); margin-top: 0; margin-bottom: 0; text-align: center;">
+                            <span class="lang-fr">Rendu Reed&amp;Brass Lab - trompette avec / sans sourdine</span><span class="lang-en">Reed&amp;Brass Lab render - trumpet with / without mute</span>
+                        </p>
+                        <p class="lang-fr" style="font-size: 0.9rem; color: var(--muted); margin-top: 2px; text-align: center; max-width: 560px;">
+                            <em>It Never Entered My Mind</em> (Miles Davis) - ligne de trompette synthétisée par Reed&amp;Brass Lab, sur l'accompagnement instrumental original (isolé par séparation de sources, d'où quelques artefacts résiduels). Même passage joué trompette ouverte puis avec sourdine (Harmon).
+                        </p>
+                        <p class="lang-en" style="font-size: 0.9rem; color: var(--muted); margin-top: 2px; text-align: center; max-width: 560px;">
+                            <em>It Never Entered My Mind</em> (Miles Davis) - trumpet line synthesized by Reed&amp;Brass Lab, over the original instrumental backing (isolated by source separation, hence some residual artefacts). Same passage played open, then with a (Harmon) mute.
+                        </p>
+                        <p style="font-size: 0.9rem; margin-top: 2px; text-align: center;">
+                            <a href="ReedLab/it-never-entered-my-mind.gp5" download><span class="lang-fr">&#8681; Télécharger la partition (.gp5)</span><span class="lang-en">&#8681; Download the score (.gp5)</span></a>
+                        </p>
+                        <div style="width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 14px;">
+                            <div>
+                                <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;"><span class="lang-fr">Trompette sans sourdine</span><span class="lang-en">Trumpet without mute</span></p>
+                                <audio controls style="width: 100%;">
+                                    <source src="ReedLab/it-never-entered-my-mind_unmuted.mp3" type="audio/mpeg">
+                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
+                                </audio>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;"><span class="lang-fr">Trompette avec sourdine (Harmon)</span><span class="lang-en">Trumpet with (Harmon) mute</span></p>
+                                <audio controls style="width: 100%;">
+                                    <source src="ReedLab/it-never-entered-my-mind_muted.mp3" type="audio/mpeg">
+                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
+                                </audio>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -543,10 +580,10 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3><span class="lang-fr">Ingénieur R&D - Traitement du signal &amp; Data science</span><span class="lang-en">R&D Engineer — Signal Processing &amp; Data Science</span></h3>
+                        <h3><span class="lang-fr">Ingénieur R&D - Traitement du signal &amp; Data science</span><span class="lang-en">R&D Engineer - Signal Processing &amp; Data Science</span></h3>
                         <div class="exp-company">Wavely</div>
                     </div>
-                    <div class="exp-meta">2022 — 2026<br>Lille, France</div>
+                    <div class="exp-meta">2022 - 2026<br>Lille, France</div>
                 </div>
                 <div class="exp-body">
                     <p class="lang-fr">Recherche, évaluation et industrialisation de nouveaux cas d'usage de détection d'événements par capteurs acoustiques embarqués, avec intégration de modèles d'IA pour la détection et la classification.</p>
@@ -575,7 +612,7 @@
                         <h3><span class="lang-fr">Enseignant en Acoustique (Sound Design)</span><span class="lang-en">Acoustics Lecturer (Sound Design)</span></h3>
                         <div class="exp-company">ISCOM / Studio M</div>
                     </div>
-                    <div class="exp-meta"><span class="lang-fr">Sept. 2022 — Avr. 2023</span><span class="lang-en">Sept 2022 — Apr 2023</span><br>Lille, France</div>
+                    <div class="exp-meta"><span class="lang-fr">Sept. 2022 - Avr. 2023</span><span class="lang-en">Sept 2022 - Apr 2023</span><br>Lille, France</div>
                 </div>
                 <div class="exp-body">
                     <p class="lang-fr">Conception et animation d'un module  de 32 heures d'introduction à l'acoustique pour les étudiants en Sound Design (Studio M). Enseignement axé sur la physique du son, les phénomènes acoustiques, la perception &amp; psychoacoustique, l'acoustique des salles et l'électroacoustique.</p>
@@ -586,10 +623,10 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3><span class="lang-fr">Post-doctorat — Turbulences</span><span class="lang-en">Postdoctoral Researcher — Turbulence</span></h3>
+                        <h3><span class="lang-fr">Post-doctorat - Turbulences</span><span class="lang-en">Postdoctoral Researcher - Turbulence</span></h3>
                         <div class="exp-company">LMFL, Centrale Lille</div>
                     </div>
-                    <div class="exp-meta">2020 — 2022<br>Villeneuve-d'Ascq, France</div>
+                    <div class="exp-meta">2020 - 2022<br>Villeneuve-d'Ascq, France</div>
                 </div>
                 <div class="exp-body">
                     <p class="lang-fr">Étude d'écoulements turbulents en soufflerie par mesures LASER (PIV), caractérisation tourbillonnaire et confrontation à des modèles CFD.</p>
@@ -606,10 +643,10 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3><span class="lang-fr">Ingénieur R&D — Simulation numérique</span><span class="lang-en">R&D Engineer — Numerical Simulation</span></h3>
+                        <h3><span class="lang-fr">Ingénieur R&D - Simulation numérique</span><span class="lang-en">R&D Engineer - Numerical Simulation</span></h3>
                         <div class="exp-company">SIM Engineering</div>
                     </div>
-                    <div class="exp-meta">2019 — 2020<br>Lille, France</div>
+                    <div class="exp-meta">2019 - 2020<br>Lille, France</div>
                 </div>
                 <div class="exp-body">
                     <p class="lang-fr">Modélisation numérique et simulation des écoulements pulsatoires de gaz non linéaires dans les tuyauteries industrielles par schémas FDTD.</p>
@@ -620,10 +657,10 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3><span class="lang-fr">Doctorat CIFRE — Acoustique &amp; Vibrations</span><span class="lang-en">CIFRE Ph.D. — Acoustics &amp; Vibration</span></h3>
-                        <div class="exp-company">Le Mans Université — SIM Engineering</div>
+                        <h3><span class="lang-fr">Doctorat CIFRE - Acoustique &amp; Vibrations</span><span class="lang-en">CIFRE Ph.D. - Acoustics &amp; Vibration</span></h3>
+                        <div class="exp-company">Le Mans Université - SIM Engineering</div>
                     </div>
-                    <div class="exp-meta">2016 — 2019<br>Le Mans — Lille, France</div>
+                    <div class="exp-meta">2016 - 2019<br>Le Mans - Lille, France</div>
                 </div>
                 <div class="exp-body">
                     <p class="lang-fr"><strong>Direction :</strong> J. Gilbert, F. Gautier, A. Pelat.<br>
@@ -650,31 +687,31 @@
             <div class="exp-item">
                 <div class="exp-header">
                     <div class="exp-title">
-                        <h3><span class="lang-fr">Stages de recherche — Acoustique et propagation d'ondes</span><span class="lang-en">Research internships — Acoustics &amp; wave propagation</span></h3>
+                        <h3><span class="lang-fr">Stages de recherche - Acoustique et propagation d'ondes</span><span class="lang-en">Research internships - Acoustics &amp; wave propagation</span></h3>
                         <div class="exp-company"><span class="lang-fr">France / Écosse</span><span class="lang-en">France / Scotland</span></div>
                     </div>
-                    <div class="exp-meta">2013 — 2015</div>
+                    <div class="exp-meta">2013 - 2015</div>
                 </div>
                 <div class="exp-body">
                     <ul class="lang-fr" style="padding-left: 20px;">
-                        <li style="margin-bottom: 8px;"><strong>Mars — Juillet 2015, Université d'Édimbourg :</strong> modélisation numérique et analyse expérimentale de la propagation non linéaire d'ondes dans les instruments à vent.</li>
+                        <li style="margin-bottom: 8px;"><strong>Mars - Juillet 2015, Université d'Édimbourg :</strong> modélisation numérique et analyse expérimentale de la propagation non linéaire d'ondes dans les instruments à vent.</li>
                         <li style="margin-bottom: 8px;">
-                            <strong>Juillet — Août 2014, Institut Langevin (ESPCI ParisTech, Paris) :</strong> modélisation numérique et analyse expérimentale de la focalisation d'ondes de surface sur des plaques isotropes (phénomène de lentille acoustique).
+                            <strong>Juillet - Août 2014, Institut Langevin (ESPCI ParisTech, Paris) :</strong> modélisation numérique et analyse expérimentale de la focalisation d'ondes de surface sur des plaques isotropes (phénomène de lentille acoustique).
                             <div style="margin-top: 10px;">
                                 <img src="langevin.png" alt="Projet Institut Langevin" style="max-width: 100%; height: auto;">
                             </div>
                         </li>                        
-                        <li><strong>Juin 2013, LAM — UPMC (Paris) :</strong> développement d'une méthode non intrusive de caractérisation acoustique d'un conduit vocal, pour l'amélioration de <em>talk-box</em>.</li>
+                        <li><strong>Juin 2013, LAM - UPMC (Paris) :</strong> développement d'une méthode non intrusive de caractérisation acoustique d'un conduit vocal, pour l'amélioration de <em>talk-box</em>.</li>
                     </ul>
                     <ul class="lang-en" style="padding-left: 20px;">
-                        <li style="margin-bottom: 8px;"><strong>March — July 2015, University of Edinburgh:</strong> numerical modeling and experimental analysis of nonlinear wave propagation in wind instruments.</li>
+                        <li style="margin-bottom: 8px;"><strong>March - July 2015, University of Edinburgh:</strong> numerical modeling and experimental analysis of nonlinear wave propagation in wind instruments.</li>
                         <li style="margin-bottom: 8px;">
-                            <strong>July — August 2014, Institut Langevin (ESPCI ParisTech, Paris):</strong> numerical modeling and experimental analysis of surface-wave focusing on isotropic plates (acoustic lens phenomenon).
+                            <strong>July - August 2014, Institut Langevin (ESPCI ParisTech, Paris):</strong> numerical modeling and experimental analysis of surface-wave focusing on isotropic plates (acoustic lens phenomenon).
                             <div style="margin-top: 10px;">
                                 <img src="langevin.png" alt="Institut Langevin project" style="max-width: 100%; height: auto;">
                             </div>
                         </li>
-                        <li><strong>June 2013, LAM — UPMC (Paris):</strong> development of a non-intrusive method for acoustic characterization of a vocal tract, to improve <em>talk-box</em> devices.</li>
+                        <li><strong>June 2013, LAM - UPMC (Paris):</strong> development of a non-intrusive method for acoustic characterization of a vocal tract, to improve <em>talk-box</em> devices.</li>
                     </ul>
                 </div>
             </div>
@@ -684,15 +721,15 @@
         <section id="formation">
             <h2><span class="lang-fr">Formation</span><span class="lang-en">Education</span></h2>
             <div class="exp-item">
-                <strong><span class="lang-fr">Doctorat en acoustique</span><span class="lang-en">Ph.D. in Acoustics</span></strong> — Le Mans Université <span style="float: right; color:var(--muted);"><span class="lang-fr">Juin 2019</span><span class="lang-en">June 2019</span></span>
+                <strong><span class="lang-fr">Doctorat en acoustique</span><span class="lang-en">Ph.D. in Acoustics</span></strong> - Le Mans Université <span style="float: right; color:var(--muted);"><span class="lang-fr">Juin 2019</span><span class="lang-en">June 2019</span></span>
             </div>
             <div class="exp-item" style="margin-top: 15px;">
-                <strong><span class="lang-fr">Master Recherche en acoustique</span><span class="lang-en">Research Master's in Acoustics</span></strong> — Le Mans Université <span style="float: right; color:var(--muted);">2013 — 2015</span>
+                <strong><span class="lang-fr">Master Recherche en acoustique</span><span class="lang-en">Research Master's in Acoustics</span></strong> - Le Mans Université <span style="float: right; color:var(--muted);">2013 - 2015</span>
                 <p class="lang-fr" style="font-size: 0.9rem; color:var(--muted); margin-top: 5px;">Traitement du signal, mécanique des fluides / aéro-acoustique, vibro-acoustique, opto-acoustique, acoustique non linéaire, acoustique en fluide réel.</p>
                 <p class="lang-en" style="font-size: 0.9rem; color:var(--muted); margin-top: 5px;">Signal processing, fluid mechanics / aeroacoustics, vibroacoustics, opto-acoustics, nonlinear acoustics, acoustics in real fluids.</p>
             </div>
             <div class="exp-item" style="margin-top: 15px;">
-                <strong><span class="lang-fr">Licence SPI — parcours acoustique</span><span class="lang-en">BSc in Engineering Sciences — Acoustics track</span></strong> — Le Mans Université <span style="float: right; color:var(--muted);">2012 — 2013</span>
+                <strong><span class="lang-fr">Licence SPI - parcours acoustique</span><span class="lang-en">BSc in Engineering Sciences - Acoustics track</span></strong> - Le Mans Université <span style="float: right; color:var(--muted);">2012 - 2013</span>
             </div>
         </section>
 
@@ -702,43 +739,43 @@
             <ul class="pub-list">
                 
                 <li class="pub-item">
-                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2023 — ISPIV 2023, San Diego (1er auteur)</span><span class="lang-en">2023 — ISPIV 2023, San Diego (first author)</span>
+                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2023 - ISPIV 2023, San Diego (1er auteur)</span><span class="lang-en">2023 - ISPIV 2023, San Diego (first author)</span>
                     <span class="pub-title">Vortex interactions between two cylinders in a turbulent boundary layer</span>
                     <a href="https://www.researchgate.net/profile/Romain-Beauvais/publication/377231636_Vortex_interactions_between_two_cylinders_in_a_turbulent_boundary_layer/links/659c1cff6f6e450f19d772c2/Vortex-interactions-between-two-cylinders-in-a-turbulent-boundary-layer.pdf?origin=profileOverview&_tp=eyJjb250ZXh0Ijp7InBhZ2UiOiJwcm9maWxlIiwicHJldmlvdXNQYWdlIjpudWxsLCJwb3NpdGlvbiI6InBhZ2VDb250ZW50In19" class="pub-link" target="_blank"><span class="lang-fr">Lire l'article →</span><span class="lang-en">Read the paper →</span></a>
                 </li>
 
                 <li class="pub-item">
-                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2023 — Forum Acusticum (1er auteur)</span><span class="lang-en">2023 — Forum Acusticum (first author)</span>
+                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2023 - Forum Acusticum (1er auteur)</span><span class="lang-en">2023 - Forum Acusticum (first author)</span>
                     <span class="pub-title">Nonlinear acoustic modeling in waveguides: from brass instruments to industrial applications</span>
                     <span class="pub-author">DOI : <a href="https://doi.org/10.61782/fa.2023.0061" target="_blank">10.61782/fa.2023.0061</a></span>
                 </li>
 
                 <li class="pub-item">
-                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2022 — 23rd Australasian Fluid Mechanics Conference (co-auteur)</span><span class="lang-en">2022 — 23rd Australasian Fluid Mechanics Conference (co-author)</span>
+                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2022 - 23rd Australasian Fluid Mechanics Conference (co-auteur)</span><span class="lang-en">2022 - 23rd Australasian Fluid Mechanics Conference (co-author)</span>
                     <span class="pub-title">Turbulent Kinetic Energy Budget and Dynamics of Composed Wakes in TBL</span>
                     <span class="pub-author"><span class="lang-fr">Lien HAL :</span><span class="lang-en">HAL link:</span> <a href="https://hal.science/hal-04297102/" target="_blank">hal-04297102</a></span>
                 </li>
 
                 <li class="pub-item">
-                    <span class="badge badge-journal">Journal (MSSP)</span> <span class="lang-fr">2020 — Mechanical Systems and Signal Processing (1er auteur)</span><span class="lang-en">2020 — Mechanical Systems and Signal Processing (first author)</span>
+                    <span class="badge badge-journal">Journal (MSSP)</span> <span class="lang-fr">2020 - Mechanical Systems and Signal Processing (1er auteur)</span><span class="lang-en">2020 - Mechanical Systems and Signal Processing (first author)</span>
                     <span class="pub-title">Inverse identification of the acoustic pressure inside a U-shaped pipeline based on acceleration measurements</span>
                     <span class="pub-author">DOI : <a href="https://doi.org/10.1016/j.ymssp.2021.107831" target="_blank">10.1016/j.ymssp.2021.108226</a></span>
                 </li>
 
                 <li class="pub-item">
-                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2019 — INTERNOISE, Madrid (1er auteur)</span><span class="lang-en">2019 — INTERNOISE, Madrid (first author)</span>
+                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2019 - INTERNOISE, Madrid (1er auteur)</span><span class="lang-en">2019 - INTERNOISE, Madrid (first author)</span>
                     <span class="pub-title">Estimation of the sound pressure in a bent pipe from non intrusive acceleration measurements by an inverse problem procedure</span>
                     <a href="https://www.researchgate.net/profile/Romain-Beauvais/publication/350965496_Estimation_of_the_sound_pressure_in_a_bent_pipe_from_non_intrusive_acceleration_measurements_by_an_inverse_problem_procedure/links/60bde7e692851cb13d84b6aa/Estimation-of-the-sound-pressure-in-a-bent-pipe-from-non-intrusive-acceleration-measurements-by-an-inverse-problem-procedure.pdf" class="pub-link" target="_blank"><span class="lang-fr">Lire l'article →</span><span class="lang-en">Read the paper →</span></a>
                 </li>
 
                 <li class="pub-item">
-                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2018 — INTERNOISE, Chicago (1er auteur)</span><span class="lang-en">2018 — INTERNOISE, Chicago (first author)</span>
+                    <span class="badge badge-conf"><span class="lang-fr">Conférence</span><span class="lang-en">Conference</span></span> <span class="lang-fr">2018 - INTERNOISE, Chicago (1er auteur)</span><span class="lang-en">2018 - INTERNOISE, Chicago (first author)</span>
                     <span class="pub-title">Low and High Level Acoustic Propagation in Waveguides: Vibroacoustic Coupling in a Bent Pipe at Low Frequency</span>
                     <a href="https://www.researchgate.net/profile/Romain-Beauvais/publication/350965548_Low_and_High_Level_Acoustic_Propagation_in_Waveguides_Vibroacoustic_Coupling_in_a_Bent_Pipe_at_Low_Frequency/links/60bde748a6fdcc22eae4b275/Low-and-High-Level-Acoustic-Propagation-in-Waveguides-Vibroacoustic-Coupling-in-a-Bent-Pipe-at-Low-Frequency.pdf" class="pub-link" target="_blank"><span class="lang-fr">Lire l'article →</span><span class="lang-en">Read the paper →</span></a>
                 </li>
 
                 <li class="pub-item">
-                    <span class="badge badge-journal">Journal (APL)</span> <span class="lang-fr">2014 — Applied Physics Letters (3e auteur)</span><span class="lang-en">2014 — Applied Physics Letters (third author)</span>
+                    <span class="badge badge-journal">Journal (APL)</span> <span class="lang-fr">2014 - Applied Physics Letters (3e auteur)</span><span class="lang-en">2014 - Applied Physics Letters (third author)</span>
                     <span class="pub-title">Experiments on Maxwell's Fish-eye dynamics in elastic plates</span>
                     <span class="pub-author">DOI : <a href="https://doi.org/10.1063/1.4905730" target="_blank">10.1063/1.4905730</a></span>
                 </li>
