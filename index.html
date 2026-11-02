@@ -333,6 +333,22 @@
                 margin-top: 5px;
             }
         }
+
+        /* --- Lecteurs audio type SoundCloud (wavesurfer.js) --- */
+        .ws-player { display: flex; align-items: center; gap: 12px; width: 100%; }
+        .ws-btn {
+            flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%;
+            border: none; cursor: pointer; background: var(--accent-color);
+            color: var(--bg-panel); font-size: 14px; line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform .15s ease, filter .15s ease;
+        }
+        .ws-btn:hover { transform: scale(1.07); filter: brightness(1.05); }
+        .ws-wave { flex: 1 1 auto; min-width: 0; height: 54px; cursor: pointer; }
+        .ws-time {
+            flex: 0 0 auto; font-size: 0.8rem; color: var(--muted);
+            font-variant-numeric: tabular-nums; min-width: 88px; text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -462,18 +478,17 @@
                     <div style="background: rgba(203,176,126,0.06); padding: 16px 18px; border-radius: 10px; border-left: 3px solid var(--gold); margin-bottom: 15px;">
                         <strong style="color: var(--primary-color); font-size: 1.05rem;"><span class="lang-fr">Reed&amp;Brass Lab - des cuivres et des bois joués virtuellement</span><span class="lang-en">Reed&amp;Brass Lab - brass &amp; woodwinds played virtually</span></strong>
                         <p class="lang-fr" style="font-size: 0.92rem; color: var(--light-text); margin-top: 6px; margin-bottom: 0;">
-                            <strong>L'idée :</strong> simuler virtuellement le jeu des <strong>cuivres et des bois</strong> (trompette, cor, trombone, clarinette, saxophone, etc.) à partir d’une simple <strong>partition numérique</strong>. Au lieu de reproduire des sons préenregistrés, il s'agit de <strong>recréer le fonctionnement physique réel des instruments</strong> : souffle, vibration des lèvres ou de l'anche, résonance de l'air dans le tube et rayonnement du son par le pavillon.
+                            <strong>L'idée :</strong> faire jouer des <strong>cuivres et des bois</strong> (ex. : trompette, cor, trombone, clarinette, saxophone…) de façon <strong>virtuelle</strong>, non pas en rejouant un échantillon enregistré, mais en <strong>reproduisant les mécanismes physiques réels</strong> par lesquels l'instrumentiste produit le son (souffle, lèvres ou anche, résonance du tube, pavillon), à partir d'une simple <strong>partition numérique</strong>.
                         </p>
                         <p class="lang-en" style="font-size: 0.92rem; color: var(--light-text); margin-top: 6px; margin-bottom: 0;">
-                            <strong>The idea:</strong> to virtually simulate the performance of <strong>brass and woodwind instruments</strong> (trumpet, French horn, trombone, clarinet, saxophone, etc.) from a simple <strong>digital score</strong>. Rather than playing back pre-recorded sounds, the goal is to <strong>recreate the actual physical mechanisms that produce sound</strong>: airflow, lip or reed vibrations, air-column resonance inside the instrument, and sound radiation through the bell.
+                            <strong>The idea:</strong> to play <strong>brass and woodwind instruments</strong> (e.g. trumpet, horn, trombone, clarinet, saxophone…) <strong>virtually</strong>: not by replaying a recorded sample, but by <strong>reproducing the real physical mechanisms</strong> through which a player produces the sound (breath, lips or reed, tube resonance, bell), from a simple <strong>digital score</strong>.
                         </p>
                         <p class="lang-fr" style="font-size: 0.92rem; color: var(--light-text); margin-top: 8px; margin-bottom: 0;">
-                            <strong>Le but :</strong> retrouver tout ce qui fait le <strong>réalisme du jeu instrumental</strong>, souvent absent des sons MIDI traditionnels : attaques expressives, transitions naturelles entre les notes (action des pistons, coulisses, clés…), timbre qui évolue avec l'intensité du jeu, souffle et bruits caractéristiques de l'instrument.
-                            Reproduire également l'influence des <strong>techniques de jeu sur la couleur sonore</strong> (sourdine dans le pavillon d'une trompette, main placée dans celui d'un cor…), tout en restituant fidèlement les <strong>intentions musicales inscrites dans la partition</strong> : vibrato, trémolo, glissando, nuances, crescendo, decrescendo, fade in/out, etc.
+                            <strong>Le but :</strong> retrouver les <strong>aspérités du jeu réel</strong>, justement ce qui rend le son MIDI d'un cuivre ou d'un bois trop lisse : attaques, transitions entre les notes (pistons, coulisses, clés…), timbre qui évolue avec la nuance, bruit de souffle filtré par la perce. Je souhaite aussi rendre fidèlement l'effet des <strong>techniques de jeu sur le timbre</strong> (sourdine placée dans le pavillon d'une trompette, main dans celui d'un cor…), tout en respectant les effets notés sur la partition : vibrato, trémolo, fade in/out, glissando, dynamique de jeu…
                         </p>
                         <p class="lang-en" style="font-size: 0.92rem; color: var(--light-text); margin-top: 8px; margin-bottom: 0;">
-                            <strong>The goal:</strong> to capture everything that makes <strong>real instrumental performance</strong> so expressive, much of which is missing from traditional MIDI sounds: expressive attacks, natural transitions between notes (movement of valves, slides, keys…), timbre variations with playing intensity, breath noise and other characteristic instrumental sounds.
-                            Also, to faithfully reproduce how <strong>playing techniques affect the instrument's tone color</strong> (a mute inserted into a trumpet's bell, a hand placed inside a French horn's bell…), while accurately interpreting the <strong>musical expressions and performance instructions written in the score</strong>: vibrato, tremolo, glissando, dynamics, crescendo, decrescendo, fade in/out, etc.
+                            <strong>The goal:</strong> to recover the <strong>textures of real playing</strong>, exactly what makes MIDI brass or woodwind sound too smooth: attacks, transitions between notes (valves, slides, keys…), timbre shifting with dynamics, breath noise filtered by the bore. I also want to faithfully render how <strong>playing techniques shape timbre</strong> (a mute placed in a trumpet's bell, a hand in a horn's bell…), while honouring the effects written in the score: vibrato, tremolo, fade in/out, glissando, playing dynamics…
+                        </p>
                         <p class="lang-fr" style="font-size: 1rem; color: var(--accent-color); font-weight: 600; margin-top: 12px; margin-bottom: 0;">
                             Bâtir son propre laboratoire de création sonore pour les instruments à vent.
                         </p>
@@ -501,10 +516,10 @@
 
                         <!-- Partition source -->
                         <p class="lang-fr" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 2px; text-align: center;">
-                            Partition source - <em>Amazing Grace</em> (2 voix : Trompette + Cor), Amazing-grace_2-voices.gp5
+                            Partition source - <em>Amazing Grace</em> (2 voix), Amazing-grace_2-voices.gp5
                         </p>
                         <p class="lang-en" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 2px; text-align: center;">
-                            Source score - <em>Amazing Grace</em> (2 voices: Trumpet + French horn), Amazing-grace_2-voices.gp5
+                            Source score - <em>Amazing Grace</em> (2 voices), Amazing-grace_2-voices.gp5
                         </p>
                         <img src="ReedLab/Amazing-grace_partition.png" alt="Partition Amazing Grace (2 voix)" class="research-img">
                         <p style="font-size: 0.9rem; margin-top: 2px; text-align: center;">
@@ -518,24 +533,27 @@
                         <div style="width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 14px;">
                             <div>
                                 <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;">Piano</p>
-                                <audio controls style="width: 100%;">
-                                    <source src="ReedLab/Amazing-grace_Piano.wav" type="audio/wav">
-                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
-                                </audio>
+                                <div class="ws-player" data-src="ReedLab/Amazing-grace_Piano.wav">
+                                    <button class="ws-btn" type="button" aria-label="Lecture">&#9654;</button>
+                                    <div class="ws-wave"></div>
+                                    <span class="ws-time">0:00&nbsp;/&nbsp;0:00</span>
+                                </div>
                             </div>
                             <div>
                                 <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;">Mezzo forte</p>
-                                <audio controls style="width: 100%;">
-                                    <source src="ReedLab/Amazing-grace_Mezzo-forte.wav" type="audio/wav">
-                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
-                                </audio>
+                                <div class="ws-player" data-src="ReedLab/Amazing-grace_Mezzo-forte.wav">
+                                    <button class="ws-btn" type="button" aria-label="Lecture">&#9654;</button>
+                                    <div class="ws-wave"></div>
+                                    <span class="ws-time">0:00&nbsp;/&nbsp;0:00</span>
+                                </div>
                             </div>
                             <div>
                                 <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;">Forte</p>
-                                <audio controls style="width: 100%;">
-                                    <source src="ReedLab/Amazing-grace_Forte.wav" type="audio/wav">
-                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
-                                </audio>
+                                <div class="ws-player" data-src="ReedLab/Amazing-grace_Forte.wav">
+                                    <button class="ws-btn" type="button" aria-label="Lecture">&#9654;</button>
+                                    <div class="ws-wave"></div>
+                                    <span class="ws-time">0:00&nbsp;/&nbsp;0:00</span>
+                                </div>
                             </div>
                         </div>
 
@@ -556,17 +574,19 @@
                         <div style="width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 14px;">
                             <div>
                                 <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;"><span class="lang-fr">Trompette sans sourdine</span><span class="lang-en">Trumpet without mute</span></p>
-                                <audio controls style="width: 100%;">
-                                    <source src="ReedLab/it-never-entered-my-mind_unmuted.wav" type="audio/wav">
-                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
-                                </audio>
+                                <div class="ws-player" data-src="ReedLab/it-never-entered-my-mind_unmuted.mp3">
+                                    <button class="ws-btn" type="button" aria-label="Lecture">&#9654;</button>
+                                    <div class="ws-wave"></div>
+                                    <span class="ws-time">0:00&nbsp;/&nbsp;0:00</span>
+                                </div>
                             </div>
                             <div>
                                 <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 6px;"><span class="lang-fr">Trompette avec sourdine (Harmon)</span><span class="lang-en">Trumpet with (Harmon) mute</span></p>
-                                <audio controls style="width: 100%;">
-                                    <source src="ReedLab/it-never-entered-my-mind_muted.wav" type="audio/wav">
-                                    <span class="lang-fr">Votre navigateur ne supporte pas la lecture audio.</span><span class="lang-en">Your browser does not support audio playback.</span>
-                                </audio>
+                                <div class="ws-player" data-src="ReedLab/it-never-entered-my-mind_muted.mp3">
+                                    <button class="ws-btn" type="button" aria-label="Lecture">&#9654;</button>
+                                    <div class="ws-wave"></div>
+                                    <span class="ws-time">0:00&nbsp;/&nbsp;0:00</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -827,6 +847,68 @@
 </script>
 
 <script data-goatcounter="https://romainbv.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<!-- Lecteurs forme d'onde (wavesurfer.js v7, embarqué en local) -->
+<script src="wavesurfer.min.js"></script>
+<script>
+    (function () {
+        function fmt(s) {
+            s = Math.floor(s || 0);
+            var m = Math.floor(s / 60), ss = String(s % 60).padStart(2, '0');
+            return m + ':' + ss;
+        }
+        var PLAY = '&#9654;';          // ▶
+        var PAUSE = '&#10073;&#10073;'; // ❚❚
+        var css = getComputedStyle(document.documentElement);
+        var waveColor = (css.getPropertyValue('--muted') || '#b7a88e').trim();
+        var progColor = (css.getPropertyValue('--accent-color') || '#cbb07e').trim();
+
+        function init(el) {
+            if (el.dataset.wsInit || typeof WaveSurfer === 'undefined') return;
+            el.dataset.wsInit = '1';
+            var btn = el.querySelector('.ws-btn');
+            var waveEl = el.querySelector('.ws-wave');
+            var timeEl = el.querySelector('.ws-time');
+            var ws = WaveSurfer.create({
+                container: waveEl, height: 54,
+                waveColor: waveColor, progressColor: progColor,
+                cursorColor: progColor, cursorWidth: 1,
+                barWidth: 2, barGap: 1, barRadius: 2,
+                normalize: true, url: el.dataset.src
+            });
+            el._ws = ws;
+            ws.on('ready', function () { timeEl.innerHTML = '0:00&nbsp;/&nbsp;' + fmt(ws.getDuration()); });
+            ws.on('timeupdate', function (t) { timeEl.innerHTML = fmt(t) + '&nbsp;/&nbsp;' + fmt(ws.getDuration()); });
+            ws.on('play', function () {
+                btn.innerHTML = PAUSE; btn.setAttribute('aria-label', 'Pause');
+                document.querySelectorAll('.ws-player').forEach(function (o) {
+                    if (o !== el && o._ws && o._ws.isPlaying()) o._ws.pause();
+                });
+            });
+            ws.on('pause', function () { btn.innerHTML = PLAY; btn.setAttribute('aria-label', 'Lecture'); });
+            ws.on('finish', function () { btn.innerHTML = PLAY; });
+            btn.addEventListener('click', function () { ws.playPause(); });
+        }
+
+        function ready(fn) {
+            if (document.readyState !== 'loading') fn();
+            else document.addEventListener('DOMContentLoaded', fn);
+        }
+        ready(function () {
+            var players = [].slice.call(document.querySelectorAll('.ws-player'));
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) { init(e.target); io.unobserve(e.target); }
+                    });
+                }, { rootMargin: '150px' });
+                players.forEach(function (p) { io.observe(p); });
+            } else {
+                players.forEach(init);
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
