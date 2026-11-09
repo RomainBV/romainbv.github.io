@@ -349,6 +349,17 @@
             flex: 0 0 auto; font-size: 0.8rem; color: var(--muted);
             font-variant-numeric: tabular-nums; min-width: 88px; text-align: right;
         }
+
+        /* --- Bouton de téléchargement du CV --- */
+        .cv-btn {
+            display: inline-block;
+            font-family: 'CMU Sans Serif', 'Latin Modern Sans', sans-serif;
+            background: var(--accent-color); color: #1a1512;
+            font-weight: 700; font-size: 0.86rem; letter-spacing: 0.3px;
+            text-decoration: none; padding: 9px 16px; border-radius: 999px;
+            transition: filter .15s ease, transform .15s ease;
+        }
+        .cv-btn:hover { filter: brightness(1.06); transform: translateY(-1px); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -375,12 +386,30 @@
             <li>📞 +33 6 88 11 96 04</li>
             <li>✉️ <a href="mailto:ro.beauvais@gmail.com">ro.beauvais@gmail.com</a></li>
             <li>🔗 <a href="https://www.linkedin.com/in/romain-beauvais-146931a9" target="_blank">LinkedIn</a></li>
+            <li>💻 <a href="https://github.com/RomainBV" target="_blank">GitHub</a></li>
+            <li>🎓 <a href="https://www.researchgate.net/profile/Romain-Beauvais" target="_blank">ResearchGate</a></li>
         </ul>
+        <div style="margin-top: 20px; text-align: center;">
+            <a class="cv-btn lang-fr" href="Romain_Beauvais_CV_FR.pdf" download>⤓ Télécharger mon CV (PDF)</a>
+            <a class="cv-btn lang-en" href="Romain_Beauvais_CV_EN.pdf" download>⤓ Download my CV (PDF)</a>
+        </div>
     </aside>
 
     <!-- CONTENU PRINCIPAL -->
     <main>
         
+        <!-- BANNIÈRE : POSTE RECHERCHÉ / DISPONIBILITÉ -->
+        <div style="background: linear-gradient(160deg,#2e2419 0%,#201913 100%); border: 1px solid var(--accent-color); border-radius: 12px; padding: 16px 20px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.28);">
+            <p class="lang-fr" style="margin:0; color: var(--primary-color); font-size: 0.98rem;">
+                <strong style="color: var(--accent-color);">En recherche active :</strong> Ingénieur de recherche / R&amp;D · Acoustique · Traitement du signal · Data science.<br>
+                <span style="color: var(--muted); font-size: 0.9rem;">Lille / Paris / Bruxelles · hybride ou télétravail · disponible immédiatement.</span>
+            </p>
+            <p class="lang-en" style="margin:0; color: var(--primary-color); font-size: 0.98rem;">
+                <strong style="color: var(--accent-color);">Actively seeking:</strong> Research / R&amp;D Engineer · Acoustics · Signal processing · Data science.<br>
+                <span style="color: var(--muted); font-size: 0.9rem;">Lille / Paris / Brussels · hybrid or remote · available now.</span>
+            </p>
+        </div>
+
         <!-- PROFIL -->
         <section id="profil">
             <h2><span class="lang-fr">Profil</span><span class="lang-en">Profile</span></h2>
@@ -505,7 +534,7 @@
                     <ul class="lang-en" style="padding-left: 20px; margin-top: 10px;">
                         <li style="margin-bottom: 6px;"><strong>Physics (Reed&amp;Brass Lab):</strong> full Euler (<em>uncapped</em> nonlinearity, no weakly-nonlinear assumption) &rarr; "brassy" brightness up to fortissimo; &radic;f viscothermal losses, bell radiation (Levine-Schwinger), self-oscillating lip.</li>
                         <li style="margin-bottom: 6px;"><strong>Score &rarr; sound:</strong> Guitar Pro (.gp5) conversion, gestures inferred from the score (attack, legato/staccato, breath marks, vibrato, jet noise).</li>
-                        <li style="margin-bottom: 6px;"><strong>Advanced effects:</strong> piston routing, trombone slide (variable length) and mute (Harmon), trombone glissando (moving slide), Harmon mute (parallel tubes), room reverberation; bore calibration (time- and frequency-domain models) for tuning bell / slides / lips.</li>
+                        <li style="margin-bottom: 6px;"><strong>Advanced effects:</strong> piston routing, trombone glissando (slide), Harmon mute (parallel tubes), room reverberation; bore calibration (time- and frequency-domain models) for tuning bell / slides / lips.</li>
                         <li style="margin-bottom: 6px;"><strong>Implementation:</strong> Python + Numba (fused JIT kernel), YAML/Pydantic configuration, WAV export.</li>
                     </ul>
                     <p class="lang-fr" style="font-size: 0.9rem; color: var(--light-text); margin-top: 12px;">Prolonge mes travaux de thèse (FDTD non linéaire en conduits) et mon stage à l'Université d'Édimbourg sur la propagation non linéaire dans les instruments à vent.</p>
@@ -519,11 +548,11 @@
                             Partition source - <em>Amazing Grace</em> (2 voix : Trompette + Cor), amazing-grace_2-voices.gp5
                         </p>
                         <p class="lang-en" style="font-size: 0.9rem; color: var(--muted); margin-bottom: 2px; text-align: center;">
-                            Source score - <em>Amazing Grace</em> (2 voices : Trumpet + Franch horn), amazing-grace_2-voices.gp5
+                            Source score - <em>Amazing Grace</em> (2 voices: Trumpet + French horn), amazing-grace_2-voices.gp5
                         </p>
                         <img src="ReedNBrassLab/amazing-grace_partition.png" alt="Partition Amazing Grace (2 voix)" class="research-img">
                         <p style="font-size: 0.9rem; margin-top: 2px; text-align: center;">
-                            <a href=ReedNBrassLab/amazing-grace_2-voices.gp5" download><span class="lang-fr">&#8681; Télécharger la partition (.gp5)</span><span class="lang-en">&#8681; Download the score (.gp5)</span></a>
+                            <a href="ReedNBrassLab/amazing-grace_2-voices.gp5" download><span class="lang-fr">&#8681; Télécharger la partition (.gp5)</span><span class="lang-en">&#8681; Download the score (.gp5)</span></a>
                         </p>
 
                         <!-- Extraits : meme partition, trois nuances de jeu -->
@@ -780,7 +809,7 @@
                 <li class="pub-item">
                     <span class="badge badge-journal">Journal (MSSP)</span> <span class="lang-fr">2020 - Mechanical Systems and Signal Processing (1er auteur)</span><span class="lang-en">2020 - Mechanical Systems and Signal Processing (first author)</span>
                     <span class="pub-title">Inverse identification of the acoustic pressure inside a U-shaped pipeline based on acceleration measurements</span>
-                    <span class="pub-author">DOI : <a href="https://doi.org/10.1016/j.ymssp.2021.107831" target="_blank">10.1016/j.ymssp.2021.108226</a></span>
+                    <span class="pub-author">DOI : <a href="https://doi.org/10.1016/j.ymssp.2021.108226" target="_blank">10.1016/j.ymssp.2021.108226</a></span>
                 </li>
 
                 <li class="pub-item">
