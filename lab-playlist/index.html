@@ -28,9 +28,12 @@
   .slink.solid{background:var(--accent-color);color:#1a1512;border-color:var(--accent-color)}
   .pl-head{font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif;border-top:1px solid rgba(255,255,255,.1);padding-top:16px;margin-bottom:10px}
   #playlist{display:flex;flex-direction:column;gap:6px}
-  .pl-item{display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:var(--accent-color);border:1px solid var(--accent-color);border-radius:9px;padding:10px 12px;cursor:pointer;font-family:inherit}
-  .pl-item .pl-title{font-size:.98rem;font-weight:700;color:#1a1512}
-  .pl-item .pl-sub{font-size:.78rem;color:#1a1512}
+  .pl-item{display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:rgba(203,176,126,.04);border:1px solid var(--border);border-radius:9px;padding:10px 12px;cursor:pointer;font-family:inherit;transition:.15s}
+  .pl-item:hover{background:rgba(203,176,126,.1)}
+  .pl-item.active{background:var(--accent-color);border-color:var(--accent-color)}
+  .pl-item .pl-title{font-size:.98rem;font-weight:700;color:var(--primary-color)}
+  .pl-item .pl-sub{font-size:.78rem;color:var(--muted)}
+  .pl-item.active .pl-title,.pl-item.active .pl-sub{color:#1a1512}
   .pl-soon{font-size:.78rem;color:var(--muted);font-style:italic;padding:8px 4px 2px}
   main{min-width:0}
   section{background:var(--bg-card);padding:26px;border-radius:12px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.28)}
@@ -40,6 +43,7 @@
   h2#mTitle .subm{font-weight:400;color:var(--muted);font-size:1rem}
   #mMeta{font-size:13px;color:var(--light-text);margin-bottom:16px}
   .scorebox{background:#f4ecdd;border:1px solid var(--border);border-radius:10px;overflow-x:auto;overflow-y:hidden;position:relative;margin-bottom:14px;min-height:168px}
+  .score{display:none}.score.on{display:block}
   .scorebox svg{height:168px;width:auto;display:block}
   .scorebox svg .note.active *{fill:#9c5a2a!important;stroke:#9c5a2a!important}
   #cursor{stroke:var(--red);stroke-width:90;opacity:.85}
@@ -66,22 +70,7 @@
   .vol{max-width:160px}
   #status{font-size:12px;color:var(--muted);margin:4px 2px;min-height:15px;font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif}
   @media (max-width:850px){.container{grid-template-columns:minmax(0,1fr)}aside{position:relative;top:0}}
-  @media (max-width:600px){
-    body{padding:10px}
-    .container{padding:0;gap:14px}
-    section{padding:15px}
-    aside{padding:16px 14px}
-    h2#mTitle{font-size:1.22rem}
-    .scorebox svg{height:140px}
-    .ab button{padding:11px;font-size:14px}
-    .play{width:46px;height:46px;font-size:17px}
-    .mini{padding:8px 10px}
-    .trow{gap:9px}
-    .track{padding:10px;gap:8px}
-    .tname{min-width:0}
-    .tsel{min-width:86px}
-    .vol{max-width:none;flex:1 1 100%;margin-top:2px}
-  }
+  @media (max-width:600px){body{padding:10px}.container{padding:0;gap:14px}section{padding:15px}aside{padding:16px 14px}h2#mTitle{font-size:1.22rem}.scorebox svg{height:140px}.ab button{padding:11px;font-size:14px}.play{width:46px;height:46px;font-size:17px}.mini{padding:8px 10px}.trow{gap:9px}.track{padding:10px;gap:8px}.tname{min-width:0}.tsel{min-width:86px}.vol{max-width:none;flex:1 1 100%;margin-top:2px}}
 </style>
 </head>
 <body>
@@ -95,18 +84,15 @@
       <a class="slink solid lang-en" href="Romain_Beauvais_CV_EN.pdf" download>CV</a>
       <a class="slink" href="https://www.linkedin.com/in/romain-beauvais-146931a9" target="_blank">LinkedIn</a>
     </div>
-    <div class="pl-head"><span class="lang-fr">Morceaux</span><span class="lang-en">Pieces</span></div>
-    <div id="playlist">
-      <button class="pl-item"><span class="pl-title">Largo</span><span class="pl-sub">Anton&#237;n Dvo&#345;&#225;k</span></button>
-      <div class="pl-soon"><span class="lang-fr">Autres morceaux a venir</span><span class="lang-en">More pieces soon</span></div>
-    </div>
+    <div class="pl-head"><span class="lang-fr">Arrangements</span><span class="lang-en">Arrangements</span></div>
+    <div id="playlist"><button class="pl-item" data-cfg="largo_goodman"><span class="pl-title">Largo</span><span class="pl-sub">arr. Goodman</span></button><div class="pl-soon"><span class="lang-fr">Autres a venir</span><span class="lang-en">More soon</span></div></div>
   </aside>
   <main>
     <section>
       <p class="intro"><span class="lang-fr"><strong>Ecoute comparee - Simu vs MIDI.</strong> Sons MIDI : rendu MuseScore 4.</span><span class="lang-en"><strong>Compared listening - Simu vs MIDI.</strong> MIDI sounds: MuseScore 4 render.</span></p>
-      <h2 id="mTitle">Largo <span class="subm">&middot; <span class="lang-fr">mesures 1 a 20</span><span class="lang-en">bars 1 to 20</span></span></h2>
-      <p id="mMeta">Anton&#237;n Dvo&#345;&#225;k &middot; Symphonie n&#176;9 &laquo; Du Nouveau Monde &raquo;, Op. 95 (2<sup>e</sup> mouv.) &middot; <span class="lang-fr">arrangement :</span><span class="lang-en">arrangement:</span> Goodman</p>
-      <div class="scorebox" id="scorebox"><svg width="3127px" height="278px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="visible" id="apdopif">
+      <h2 id="mTitle">Largo</h2>
+      <p id="mMeta"></p>
+      <div class="scorebox" id="scorebox"><div class="score" id="score-largo_goodman"><svg width="3127px" height="278px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="visible" id="apdopif">
    <desc>Engraved by Verovio 6.4.1-fbe8f46</desc>
    <defs>
       <g id="E050-apdopif">
@@ -3692,7 +3678,7 @@
     font-style: normal;
 }</style>
 </svg>
-</div>
+</div></div>
       <div class="ab"><button class="real on" id="abReal">Simu</button><button class="midi" id="abMidi">MIDI</button></div>
       <div class="transport"><div class="trow"><button class="play" id="play">&#9654;</button><button class="mini" id="stop">&#9632;</button><button class="mini" id="loop">Boucle</button><span class="time" id="time">0:00 / 0:00</span></div>
         <div class="trow" style="margin-top:11px"><input type="range" id="seek" min="0" max="1000" value="0"></div></div>
@@ -3701,36 +3687,36 @@
     </section>
   </main>
 </div>
-<script id="files" type="application/json">{"real":{"v1_trumpet":"v1_trumpet_real.mp3","v1_clarinet":"v1_clarinet_real.mp3","v2":"v2_real.mp3","v3":"v3_real.mp3"},"midi":{"v1_trumpet":"v1_trumpet_midi.mp3","v1_clarinet":"v1_clarinet_midi.mp3","v2":"v2_midi.mp3","v3":"v3_midi.mp3"}}</script>
-<script id="timemap" type="application/json">[{"t":0,"on":["v1nwrv56","tt6bmi0","sifkpn2"]},{"t":2308,"on":["wv3nhmh","v71x5xz","u1p0od45"]},{"t":4615,"on":["j8e4314","i1lpi8dr","hb35rqv"]},{"t":6923,"on":["kcn0kp8","k1jy8x1w","j1abgmix"]},{"t":9231,"on":["x1sht85e","wj29bkj","v1psreh0"]},{"t":11538,"on":["z1c2dvef","yhn8qk5","xr3lwlc"]},{"t":12692,"on":["b174j6oo"]},{"t":13846,"on":["n8ik00d","l1osh8qy","kyegb1c"]},{"t":18462,"on":["ajmvivq","x8n67bm","w1qc3kfc"]},{"t":20192,"on":["b1tdju97","z4ds8ko","x1uyfza6"]},{"t":20769,"on":["cxi3io3","bmgqrzo","y1b87h6m"]},{"t":23077,"on":["q9eahlv","qchws21","m1k5qfxl"]},{"t":23654,"on":["r11rm0mu","s13r28pq","nciyku0"]},{"t":24231,"on":["t1eqzi6b","tpimzz9","o1ukx8q4"]},{"t":27692,"on":["g1eigyue","gc3x0h5","aud030u"]},{"t":28558,"on":["i8buoa2"]},{"t":28846,"on":["j1u10xji","hzazb62","b197w6xn"]},{"t":30000,"on":["lr22fnk","k1r3vd1r","c18lj1pa"]},{"t":30577,"on":["l1bwpgfv","drgx3n"]},{"t":30865,"on":["n9nzmnf"]},{"t":31154,"on":["o112qtyi","ns7lnk3"]},{"t":31731,"on":["e1hn17ee"]},{"t":32308,"on":["bsqmai6","b18uawnj","rcdufcm"]},{"t":32885,"on":["d1p3zoxe","sl7vduy"]},{"t":33173,"on":["c1kiiafn"]},{"t":33462,"on":["fiha5re","e1rrcfbl"]},{"t":34038,"on":["tyjkjwe"]},{"t":34327,"on":["g9nffm6"]},{"t":34615,"on":["i1oc2lzm","g18p4pb1","vuf5kt9"]},{"t":35192,"on":["x15p8hd8"]},{"t":35769,"on":["hmbk0u9","amsu1iv"]},{"t":36346,"on":["c1am8zl2"]},{"t":36923,"on":["vhwe5jp","ux6289q","o163do4g"]},{"t":37788,"on":["x1qq26m4"]},{"t":38077,"on":["y1rgv1ch","v13mgrwi","p14o6uxz"]},{"t":39231,"on":["a1qi3p6h","xomotp9","qk4wejm"]},{"t":39808,"on":["z1hw1dy7","s124rxzl"]},{"t":40096,"on":["c805esd"]},{"t":40385,"on":["d1bwgvnb"]},{"t":40962,"on":["bzc18jb","ud9whvq"]},{"t":41538,"on":["qez77fr","on7nndk","h1ct8bz1"]},{"t":42404,"on":["r1m5pkj3"]},{"t":42692,"on":["u1l99uwa","q17zihgo","k626nzn"]},{"t":43269,"on":["s1lm43m8","lyv6apg"]},{"t":43558,"on":["v9mdu43"]},{"t":43846,"on":["wp6pl1e","u45i6wv","mn2x3qd"]},{"t":46154,"on":["i1km735x","iemtjya","z1hysfyq"]},{"t":46731,"on":["b18t9wa8"]},{"t":47019,"on":["j1hi3nii"]},{"t":47308,"on":["j1g7mu97","k160la6w","c1qo5dbe"]},{"t":48462,"on":["lw5clhx","m14xc0hi","eugbf1m"]},{"t":49038,"on":["oqzbetm","f1nfiemg"]},{"t":49327,"on":["my6ms3t"]},{"t":49615,"on":["n6qlxqz","p1y4lflm","h6e7n6i"]},{"t":50769,"on":["a1mbtu5m","c1jn5bzd","v1xoypys"]},{"t":51346,"on":["dcnxt00","x17t07an"]},{"t":51923,"on":["c1rcy25m","f1eason6","z665pph"]},{"t":52500,"on":["hlk9nrd","ay1uxf2"]},{"t":52788,"on":["d1rzkgm6"]},{"t":53077,"on":["e59memk","i1r5vjfr","ckkt537"]},{"t":55385,"on":["r1ts5m8x","v1o3qdse","p1w2rznw"]},{"t":55962,"on":["s14d9jly"]},{"t":56250,"on":["wmoaa9q"]},{"t":56538,"on":["u184bzfe","xu5qje3","q1o3cfqd"]},{"t":57692,"on":["x15awopz","zsyr523","tbkh1sk"]},{"t":58269,"on":["y107qm3y","bcyrs8q"]},{"t":58558,"on":["u1cat1lt"]},{"t":58846,"on":["a14oehz5","cmeszuq","vnlmawk"]},{"t":60000,"on":["n1o7v1hx","py9h3d5","ihmh3kp"]},{"t":60577,"on":["o1sr2gbf","qfca5jc"]},{"t":61154,"on":["rum080j","sd2ujvi","k10f2d5"]},{"t":61731,"on":["s1c72jz9","u12s50xu"]},{"t":62019,"on":["lxejtls"]},{"t":62308,"on":["uuhe00d","v1t38wki","mnjdugu"]},{"t":64615,"on":["h1fd5oxt","hsux1ku","y1xntue3"]},{"t":65481,"on":["jv8wrgu"]},{"t":65769,"on":["k1xwbd1h","ia1ev99","z5efgym"]},{"t":66923,"on":["mogd708","l14ago0z","apktq9"]},{"t":67500,"on":["mhmu5cq","bgkdezm"]},{"t":67788,"on":["o1i6203g"]},{"t":68077,"on":["pf09odp","o19sfscc"]},{"t":68654,"on":["c1dgi3y1"]},{"t":69231,"on":["ck9xx1j","c1j5n7ez","psuj78m"]},{"t":69808,"on":["e2181dl","q11ii62j"]},{"t":70096,"on":["d33ezmj"]},{"t":70385,"on":["g1wtb49w","fw9813j"]},{"t":70962,"on":["r1s65nue"]},{"t":71250,"on":["ht38e0p"]},{"t":71538,"on":["jugfipc","s36kflb"]},{"t":72115,"on":["h1bkeno7"]},{"t":72692,"on":["jz63c7l","v1ra2gtm"]},{"t":73269,"on":["l1y89eru","wpkx72y"]},{"t":73846,"on":["v1wx8edc","y1odrohy","j24pkz9"]},{"t":74712,"on":["awdp8zw"]},{"t":75000,"on":["w1dj7am5","bru838","k88u9mb"]},{"t":76154,"on":["x1li3neu","ds985j8","m16tnlrc"]},{"t":77019,"on":["eyarvfs"]},{"t":77308,"on":["yw5oc0n","fyhxwzi","nbxzoai"]},{"t":78462,"on":["l1j01lo","tkcq1a6","z172uour"]},{"t":79327,"on":["u1dcd5dp"]},{"t":79615,"on":["ob7720t","wu20qe4","c16y48it"]},{"t":80192,"on":["q2cybfi","xyeoogs","e1dk8ulv"]},{"t":80769,"on":["r1ybixkh","y5abmvw","f67ytc9"]},{"t":83077,"on":["e18p9x25","k1ufa8d0","r1tqavr1"]},{"t":84808,"on":["fzmfi9m","tugcppj"]},{"t":85385,"on":["gr5zafl","v1v7r1qd"]},{"t":86538,"on":["h4zxq1k","lmaekn7","x1v3ldfh"]},{"t":87692,"on":["z1sim8b8","zqnf25j","j1y4d2x7"]},{"t":88846,"on":["b1jwpo0q"]},{"t":90000,"on":["f159lfcp","m1n5tfl2"]},{"t":90769,"on":["g11bad4l","o1kw31e3"]},{"t":91538,"on":["h13ievmf","phbvkba"]},{"t":92308,"on":["f1hivyta","l1m1acc9","rm7ke2w"]},{"t":93077,"on":["mzg10s8"]},{"t":93846,"on":["n12m3xlq"]},{"t":94615,"on":["rv5u6c6","phwmas2"]}]</script>
+<script id="cfg" type="application/json">[{"id":"largo_goodman","title":"Largo","arranger":"Goodman","meta":"Anton&#237;n Dvo&#345;&#225;k &middot; Symphonie n&#176;9 &laquo; Du Nouveau Monde &raquo;, Op. 95 (2<sup>e</sup> mouv.) &middot; <span class=\"lang-fr\">arrangement :</span><span class=\"lang-en\">arrangement:</span> Goodman","sub":"mesures 1 a 20","subEn":"bars 1 to 20","dur":{"real":98.61,"midi":96.15},"maxms":96923,"vbw":74440,"files":{"real":{"v1_trumpet":"v1_trumpet_real.mp3","v1_clarinet":"v1_clarinet_real.mp3","v2":"v2_real.mp3","v3":"v3_real.mp3"},"midi":{"v1_trumpet":"v1_trumpet_midi.mp3","v1_clarinet":"v1_clarinet_midi.mp3","v2":"v2_midi.mp3","v3":"v3_midi.mp3"}}}]</script>
+<script id="tm" type="application/json">{"largo_goodman":[{"t":0,"on":["v1nwrv56","tt6bmi0","sifkpn2"]},{"t":2308,"on":["wv3nhmh","v71x5xz","u1p0od45"]},{"t":4615,"on":["j8e4314","i1lpi8dr","hb35rqv"]},{"t":6923,"on":["kcn0kp8","k1jy8x1w","j1abgmix"]},{"t":9231,"on":["x1sht85e","wj29bkj","v1psreh0"]},{"t":11538,"on":["z1c2dvef","yhn8qk5","xr3lwlc"]},{"t":12692,"on":["b174j6oo"]},{"t":13846,"on":["n8ik00d","l1osh8qy","kyegb1c"]},{"t":18462,"on":["ajmvivq","x8n67bm","w1qc3kfc"]},{"t":20192,"on":["b1tdju97","z4ds8ko","x1uyfza6"]},{"t":20769,"on":["cxi3io3","bmgqrzo","y1b87h6m"]},{"t":23077,"on":["q9eahlv","qchws21","m1k5qfxl"]},{"t":23654,"on":["r11rm0mu","s13r28pq","nciyku0"]},{"t":24231,"on":["t1eqzi6b","tpimzz9","o1ukx8q4"]},{"t":27692,"on":["g1eigyue","gc3x0h5","aud030u"]},{"t":28558,"on":["i8buoa2"]},{"t":28846,"on":["j1u10xji","hzazb62","b197w6xn"]},{"t":30000,"on":["lr22fnk","k1r3vd1r","c18lj1pa"]},{"t":30577,"on":["l1bwpgfv","drgx3n"]},{"t":30865,"on":["n9nzmnf"]},{"t":31154,"on":["o112qtyi","ns7lnk3"]},{"t":31731,"on":["e1hn17ee"]},{"t":32308,"on":["bsqmai6","b18uawnj","rcdufcm"]},{"t":32885,"on":["d1p3zoxe","sl7vduy"]},{"t":33173,"on":["c1kiiafn"]},{"t":33462,"on":["fiha5re","e1rrcfbl"]},{"t":34038,"on":["tyjkjwe"]},{"t":34327,"on":["g9nffm6"]},{"t":34615,"on":["i1oc2lzm","g18p4pb1","vuf5kt9"]},{"t":35192,"on":["x15p8hd8"]},{"t":35769,"on":["hmbk0u9","amsu1iv"]},{"t":36346,"on":["c1am8zl2"]},{"t":36923,"on":["vhwe5jp","ux6289q","o163do4g"]},{"t":37788,"on":["x1qq26m4"]},{"t":38077,"on":["y1rgv1ch","v13mgrwi","p14o6uxz"]},{"t":39231,"on":["a1qi3p6h","xomotp9","qk4wejm"]},{"t":39808,"on":["z1hw1dy7","s124rxzl"]},{"t":40096,"on":["c805esd"]},{"t":40385,"on":["d1bwgvnb"]},{"t":40962,"on":["bzc18jb","ud9whvq"]},{"t":41538,"on":["qez77fr","on7nndk","h1ct8bz1"]},{"t":42404,"on":["r1m5pkj3"]},{"t":42692,"on":["u1l99uwa","q17zihgo","k626nzn"]},{"t":43269,"on":["s1lm43m8","lyv6apg"]},{"t":43558,"on":["v9mdu43"]},{"t":43846,"on":["wp6pl1e","u45i6wv","mn2x3qd"]},{"t":46154,"on":["i1km735x","iemtjya","z1hysfyq"]},{"t":46731,"on":["b18t9wa8"]},{"t":47019,"on":["j1hi3nii"]},{"t":47308,"on":["j1g7mu97","k160la6w","c1qo5dbe"]},{"t":48462,"on":["lw5clhx","m14xc0hi","eugbf1m"]},{"t":49038,"on":["oqzbetm","f1nfiemg"]},{"t":49327,"on":["my6ms3t"]},{"t":49615,"on":["n6qlxqz","p1y4lflm","h6e7n6i"]},{"t":50769,"on":["a1mbtu5m","c1jn5bzd","v1xoypys"]},{"t":51346,"on":["dcnxt00","x17t07an"]},{"t":51923,"on":["c1rcy25m","f1eason6","z665pph"]},{"t":52500,"on":["hlk9nrd","ay1uxf2"]},{"t":52788,"on":["d1rzkgm6"]},{"t":53077,"on":["e59memk","i1r5vjfr","ckkt537"]},{"t":55385,"on":["r1ts5m8x","v1o3qdse","p1w2rznw"]},{"t":55962,"on":["s14d9jly"]},{"t":56250,"on":["wmoaa9q"]},{"t":56538,"on":["u184bzfe","xu5qje3","q1o3cfqd"]},{"t":57692,"on":["x15awopz","zsyr523","tbkh1sk"]},{"t":58269,"on":["y107qm3y","bcyrs8q"]},{"t":58558,"on":["u1cat1lt"]},{"t":58846,"on":["a14oehz5","cmeszuq","vnlmawk"]},{"t":60000,"on":["n1o7v1hx","py9h3d5","ihmh3kp"]},{"t":60577,"on":["o1sr2gbf","qfca5jc"]},{"t":61154,"on":["rum080j","sd2ujvi","k10f2d5"]},{"t":61731,"on":["s1c72jz9","u12s50xu"]},{"t":62019,"on":["lxejtls"]},{"t":62308,"on":["uuhe00d","v1t38wki","mnjdugu"]},{"t":64615,"on":["h1fd5oxt","hsux1ku","y1xntue3"]},{"t":65481,"on":["jv8wrgu"]},{"t":65769,"on":["k1xwbd1h","ia1ev99","z5efgym"]},{"t":66923,"on":["mogd708","l14ago0z","apktq9"]},{"t":67500,"on":["mhmu5cq","bgkdezm"]},{"t":67788,"on":["o1i6203g"]},{"t":68077,"on":["pf09odp","o19sfscc"]},{"t":68654,"on":["c1dgi3y1"]},{"t":69231,"on":["ck9xx1j","c1j5n7ez","psuj78m"]},{"t":69808,"on":["e2181dl","q11ii62j"]},{"t":70096,"on":["d33ezmj"]},{"t":70385,"on":["g1wtb49w","fw9813j"]},{"t":70962,"on":["r1s65nue"]},{"t":71250,"on":["ht38e0p"]},{"t":71538,"on":["jugfipc","s36kflb"]},{"t":72115,"on":["h1bkeno7"]},{"t":72692,"on":["jz63c7l","v1ra2gtm"]},{"t":73269,"on":["l1y89eru","wpkx72y"]},{"t":73846,"on":["v1wx8edc","y1odrohy","j24pkz9"]},{"t":74712,"on":["awdp8zw"]},{"t":75000,"on":["w1dj7am5","bru838","k88u9mb"]},{"t":76154,"on":["x1li3neu","ds985j8","m16tnlrc"]},{"t":77019,"on":["eyarvfs"]},{"t":77308,"on":["yw5oc0n","fyhxwzi","nbxzoai"]},{"t":78462,"on":["l1j01lo","tkcq1a6","z172uour"]},{"t":79327,"on":["u1dcd5dp"]},{"t":79615,"on":["ob7720t","wu20qe4","c16y48it"]},{"t":80192,"on":["q2cybfi","xyeoogs","e1dk8ulv"]},{"t":80769,"on":["r1ybixkh","y5abmvw","f67ytc9"]},{"t":83077,"on":["e18p9x25","k1ufa8d0","r1tqavr1"]},{"t":84808,"on":["fzmfi9m","tugcppj"]},{"t":85385,"on":["gr5zafl","v1v7r1qd"]},{"t":86538,"on":["h4zxq1k","lmaekn7","x1v3ldfh"]},{"t":87692,"on":["z1sim8b8","zqnf25j","j1y4d2x7"]},{"t":88846,"on":["b1jwpo0q"]},{"t":90000,"on":["f159lfcp","m1n5tfl2"]},{"t":90769,"on":["g11bad4l","o1kw31e3"]},{"t":91538,"on":["h13ievmf","phbvkba"]},{"t":92308,"on":["f1hivyta","l1m1acc9","rm7ke2w"]},{"t":93077,"on":["mzg10s8"]},{"t":93846,"on":["n12m3xlq"]},{"t":94615,"on":["rv5u6c6","phwmas2"]}]}</script>
 <script>
-const FILES=JSON.parse(document.getElementById('files').textContent);
-const PTS=JSON.parse(document.getElementById('timemap').textContent);
-let MAXMS=96923, VBW=74440;
-const DUR={real:98.6,midi:96.6};
-const A={real:{},midi:{}};
-const st={bank:"real",timbre:"trumpet",playing:false,loop:false,pos:0,
+const CFG=JSON.parse(document.getElementById('cfg').textContent);
+const TM=JSON.parse(document.getElementById('tm').textContent);
+const byId=Object.fromEntries(CFG.map(c=>[c.id,c]));
+let DUR={real:1,midi:1},MAXMS=1,VBW=1,PTS=[];
+const A={};
+const st={cfg:CFG[0].id,bank:"real",timbre:"trumpet",playing:false,loop:false,pos:0,
   tr:[{muted:false,solo:false,vol:1},{muted:false,solo:false,vol:1},{muted:false,solo:false,vol:1}]};
 const $=s=>document.querySelector(s);
 const setStatus=m=>{const e=$("#status");if(e)e.textContent=m||"";};
-let loaded=0;
+let loaded=0,totalAudio=0;
 function initAudio(){
-  for(const bank of ["real","midi"]) for(const k in FILES[bank]){
-    const a=new Audio();a.preload="auto";a.src=FILES[bank][k];A[bank][k]=a;
-    a.addEventListener('loadedmetadata',()=>{if(isFinite(a.duration)){DUR[bank]=Math.max(DUR[bank]||0,a.duration);} loaded++; if(loaded>=8)setStatus("Pret.");});
-    a.addEventListener('error',()=>setStatus("Erreur de chargement d'une piste ("+a.src.split('/').pop()+")."));
-  }
+  CFG.forEach(c=>{A[c.id]={real:{},midi:{}};
+    for(const bank of ["real","midi"])for(const k in c.files[bank]){totalAudio++;
+      const a=new Audio();a.preload="auto";a.src=c.files[bank][k];A[c.id][bank][k]=a;
+      a.addEventListener('loadedmetadata',()=>{if(isFinite(a.duration))byId[c.id].dur[bank]=Math.max(byId[c.id].dur[bank]||0,a.duration);loaded++;if(loaded>=totalAudio)setStatus("Pret.");});
+      a.addEventListener('error',()=>setStatus("Erreur de chargement ("+a.src.split('/').pop()+")."));}});
 }
 function keyFor(i){return i===0?("v1_"+st.timbre):(i===1?"v2":"v3");}
-function activeEls(){return [A[st.bank][keyFor(0)],A[st.bank][keyFor(1)],A[st.bank][keyFor(2)]];}
-function clockEl(){return A[st.bank].v2||activeEls()[0];}
-function pauseAll(){for(const bank of ["real","midi"])for(const k in A[bank]){try{A[bank][k].pause();}catch(e){}}}
+function activeEls(){return [A[st.cfg][st.bank][keyFor(0)],A[st.cfg][st.bank][keyFor(1)],A[st.cfg][st.bank][keyFor(2)]];}
+function clockEl(){return A[st.cfg][st.bank].v2||activeEls()[0];}
+function pauseAll(){for(const id in A)for(const bank of ["real","midi"])for(const k in A[id][bank]){try{A[id][bank][k].pause();}catch(e){}}}
 function applyGains(){const anySolo=st.tr.some(x=>x.solo);activeEls().forEach((e,i)=>{if(!e)return;const t=st.tr[i];const ok=(anySolo?t.solo:true)&&!t.muted;e.muted=!ok;e.volume=t.vol;});}
 function curPos(){return st.playing?(clockEl()?clockEl().currentTime:st.pos):st.pos;}
 function curP(){return Math.max(0,Math.min(1,curPos()/DUR[st.bank]));}
 function resync(playIt){pauseAll();const els=activeEls();els.forEach(e=>{if(!e)return;try{e.currentTime=Math.max(0,Math.min(st.pos,(e.duration||DUR[st.bank])-0.03));}catch(x){}});applyGains();
   if(playIt)els.forEach(e=>{if(e)e.play().catch(()=>{});});st.playing=playIt;$("#play").innerHTML=playIt?"&#10074;&#10074;":"&#9654;";if(playIt)tick();else draw();}
-function play(){st.pos=curPos();if(!A[st.bank][keyFor(0)]){setStatus("Audio pas encore pret.");return;}resync(true);}
+function play(){st.pos=curPos();if(!activeEls()[0]){setStatus("Audio pas encore pret.");return;}resync(true);}
 function pause(){st.pos=curPos();pauseAll();st.playing=false;$("#play").innerHTML="&#9654;";}
 function stopPlay(){pauseAll();st.playing=false;st.pos=0;$("#play").innerHTML="&#9654;";try{activeEls().forEach(e=>{if(e)e.currentTime=0;});}catch(x){}draw();}
 function switchBank(b){if(b===st.bank)return;const p=curP();st.bank=b;st.pos=p*DUR[b];
@@ -3738,18 +3724,24 @@ function switchBank(b){if(b===st.bank)return;const p=curP();st.bank=b;st.pos=p*D
 function fmt(s){s=Math.max(0,s|0);return (s/60|0)+":"+String(s%60).padStart(2,"0");}
 let seeking=false;
 function tick(){if(!st.playing)return;if(curPos()>=DUR[st.bank]-0.05){if(st.loop){st.pos=0;resync(true);}else{stopPlay();return;}}draw();requestAnimationFrame(tick);}
-const svg=$("#scorebox svg");
-const cursor=document.createElementNS("http://www.w3.org/2000/svg","line");cursor.id="cursor";svg.appendChild(cursor);
-let vbH=6600;{const vb=svg.getAttribute("viewBox");if(vb){const a=vb.split(/\s+/).map(Number);vbH=a[3];VBW=a[2];}}
-cursor.setAttribute("y1",0);cursor.setAttribute("y2",vbH);
-let XP=[],activeIds=[];
-function buildX(){XP=PTS.filter(p=>p.on).map(p=>{let x=null;for(const id of p.on){const el=document.getElementById(id);if(el){try{const b=el.getBBox();x=b.x+b.width/2;break;}catch(e){}}}return {t:p.t,x:x,on:p.on};}).filter(p=>p.x!==null);}
+let svg=null,cursor=null,XP=[],activeIds=[];
+function setupScore(){
+  document.querySelectorAll('.score').forEach(d=>d.classList.remove('on'));
+  const div=document.getElementById('score-'+st.cfg);div.classList.add('on');
+  svg=div.querySelector('svg');
+  const old=svg.querySelector('#cursor');if(old)old.remove();
+  cursor=document.createElementNS("http://www.w3.org/2000/svg","line");cursor.id="cursor";svg.appendChild(cursor);
+  let vbH=6600;const vb=svg.getAttribute("viewBox");if(vb){const a=vb.split(/\s+/).map(Number);vbH=a[3];VBW=a[2];}
+  cursor.setAttribute("y1",0);cursor.setAttribute("y2",vbH);
+  buildX();
+}
+function buildX(){XP=PTS.filter(p=>p.on).map(p=>{let x=null;for(const id of p.on){const el=svg.querySelector('[id="'+id+'"]');if(el){try{const b=el.getBBox();x=b.x+b.width/2;break;}catch(e){}}}return {t:p.t,x:x,on:p.on};}).filter(p=>p.x!==null);activeIds=[];}
 function xAtMs(ms){if(!XP.length)return 0;if(ms<=XP[0].t)return XP[0].x;if(ms>=XP[XP.length-1].t)return XP[XP.length-1].x;
   let lo=0,hi=XP.length-1;while(lo<hi-1){const m=(lo+hi)>>1;if(XP[m].t<=ms)lo=m;else hi=m;}const a=XP[lo],b=XP[hi],f=(ms-a.t)/Math.max(1,b.t-a.t);return a.x+f*(b.x-a.x);}
 function highlight(ms){let idx=-1;for(let i=0;i<XP.length;i++){if(XP[i].t<=ms)idx=i;else break;}const ids=idx>=0?XP[idx].on:[];if(ids.join()===activeIds.join())return;
-  activeIds.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove("active");});ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add("active");});activeIds=ids;}
+  activeIds.forEach(id=>{const e=svg.querySelector('[id="'+id+'"]');if(e)e.classList.remove("active");});ids.forEach(id=>{const e=svg.querySelector('[id="'+id+'"]');if(e)e.classList.add("active");});activeIds=ids;}
 const box=()=>$("#scorebox");
-function draw(){const p=curP(),ms=p*MAXMS,x=xAtMs(ms);cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);highlight(ms);
+function draw(){if(!svg)return;const p=curP(),ms=p*MAXMS,x=xAtMs(ms);cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);highlight(ms);
   const sw=svg.getBoundingClientRect().width;box().scrollLeft=(x/VBW)*sw-box().clientWidth*0.42;
   $("#time").textContent=fmt(p*MAXMS/1000)+" / "+fmt(MAXMS/1000);if(!seeking)$("#seek").value=p*1000;}
 function renderTracks(){const el=$("#tracks");el.innerHTML="";const anySolo=st.tr.some(x=>x.solo);const names=[null,"Cor","Trombone"];
@@ -3762,15 +3754,26 @@ function renderTracks(){const el=$("#tracks");el.innerHTML="";const anySolo=st.t
   el.querySelectorAll("[data-v]").forEach(r=>r.oninput=()=>{st.tr[+r.dataset.v].vol=+r.value;applyGains();});
   const tb=$("#timbre");if(tb)tb.onchange=()=>{const p=curP();st.timbre=tb.value;st.pos=p*DUR[st.bank];resync(st.playing);};
 }
+function selectCfg(id){const c=byId[id];if(!c)return;pauseAll();st.cfg=id;st.bank="real";st.timbre="trumpet";st.pos=0;st.playing=false;
+  st.tr.forEach(t=>{t.muted=false;t.solo=false;t.vol=1;});
+  DUR=c.dur;MAXMS=c.maxms;VBW=c.vbw;PTS=TM[id];
+  document.querySelectorAll('.pl-item').forEach(e=>e.classList.toggle('active',e.dataset.cfg===id));
+  const lang=document.documentElement.getAttribute('data-lang')||'fr';
+  $("#mTitle").innerHTML=c.title+' <span class="subm">&middot; <span class="lang-fr">'+c.sub+'</span><span class="lang-en">'+c.subEn+'</span></span>';
+  $("#mMeta").innerHTML=c.meta;
+  $("#abReal").classList.add("on");$("#abMidi").classList.remove("on");$("#play").innerHTML="&#9654;";
+  setupScore();renderTracks();draw();
+}
 $("#play").onclick=()=>{st.playing?pause():play();};
 $("#stop").onclick=stopPlay;
 $("#loop").onclick=e=>{st.loop=!st.loop;e.target.classList.toggle("on",st.loop);};
 $("#abReal").onclick=()=>switchBank("real");
 $("#abMidi").onclick=()=>switchBank("midi");
+document.querySelectorAll('.pl-item').forEach(b=>b.onclick=()=>selectCfg(b.dataset.cfg));
 const seek=$("#seek");
-seek.addEventListener("input",()=>{seeking=true;const p=seek.value/1000;$("#time").textContent=fmt(p*MAXMS/1000)+" / "+fmt(MAXMS/1000);const x=xAtMs(p*MAXMS);cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);});
+seek.addEventListener("input",()=>{seeking=true;const p=seek.value/1000;$("#time").textContent=fmt(p*MAXMS/1000)+" / "+fmt(MAXMS/1000);const x=xAtMs(p*MAXMS);if(cursor){cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);}});
 seek.addEventListener("change",()=>{const p=seek.value/1000;seeking=false;st.pos=p*DUR[st.bank];resync(st.playing);});
-initAudio();renderTracks();buildX();draw();setStatus("Chargement...");
+initAudio();selectCfg(st.cfg);setStatus("Chargement...");
 </script>
 <script>(function(){function setLang(l){if(l!=='en')l='fr';document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l;try{localStorage.setItem('lang',l);}catch(e){}var b=document.querySelectorAll('.lang-switch button');for(var i=0;i<b.length;i++)b[i].classList.toggle('active',b[i].getAttribute('data-setlang')===l);}
 document.addEventListener('DOMContentLoaded',function(){var b=document.querySelectorAll('.lang-switch button');for(var i=0;i<b.length;i++)b[i].addEventListener('click',function(){setLang(this.getAttribute('data-setlang'));});setLang(document.documentElement.getAttribute('data-lang')||'fr');});})();</script>
