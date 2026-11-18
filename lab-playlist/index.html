@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reed&amp;Brass Lab - Ecoute comparee | Romain Beauvais</title>
+<script>try{document.documentElement.setAttribute('data-lang',localStorage.getItem('lang')||'fr');}catch(e){document.documentElement.setAttribute('data-lang','fr');}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-sans-serif.css">
+<style>
+  :root{--primary-color:#f3e9dc;--accent-color:#cbb07e;--gold:#cbb07e;--light-text:#d8cfc2;
+    --bg-body:#1a1512;--bg-card:#2e2419;--bg-panel:#140f0c;--muted:#b7a88e;--border:rgba(203,176,126,0.16);--red:#b5553f;--green:#8a9a5b}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'CMU Serif','Latin Modern Roman',Georgia,serif;color:var(--light-text);background:var(--bg-body);line-height:1.6}
+  h1,h2,h3{font-family:'CMU Serif','Latin Modern Roman',Georgia,serif;font-weight:700;letter-spacing:.2px}
+  .sans{font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif}
+  .container{max-width:1150px;margin:0 auto;padding:20px;display:grid;grid-template-columns:270px 1fr;gap:26px}
+  html[data-lang="fr"] .lang-en{display:none}
+  html[data-lang="en"] .lang-fr{display:none}
+  aside{background:linear-gradient(160deg,#1e1713 0%,#140f0c 100%);color:#f1e7d9;border:1px solid var(--border);
+    padding:22px 18px;border-radius:12px;height:fit-content;position:sticky;top:20px}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-color);filter:sepia(.2) contrast(1.05) saturate(.85)}
+  .brand .nm{font-size:1rem;color:var(--primary-color);font-weight:700;line-height:1.2}
+  .brand .rl{font-size:.78rem;color:var(--muted)}
+  .lang-switch{display:flex;gap:2px;width:fit-content;margin:0 0 14px;background:rgba(203,176,126,.08);border:1px solid var(--border);border-radius:999px;padding:3px}
+  .lang-switch button{font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);padding:4px 11px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.5px;transition:.2s}
+  .lang-switch button.active{background:var(--accent-color);color:#1a1512}
+  .sidelinks{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .slink{font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.3px;
+    text-decoration:none;color:var(--accent-color);border:1px solid var(--border);border-radius:999px;padding:5px 11px;transition:.15s}
+  .slink:hover{background:rgba(203,176,126,.08)}
+  .slink.solid{background:var(--accent-color);color:#1a1512;border-color:var(--accent-color)}
+  .pl-head{font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif;
+    border-top:1px solid rgba(255,255,255,.1);padding-top:16px;margin-bottom:10px}
+  #playlist{display:flex;flex-direction:column;gap:6px}
+  .pl-item{display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:rgba(203,176,126,.04);border:1px solid var(--border);
+    border-radius:9px;padding:10px 12px;cursor:pointer;color:var(--light-text);font-family:inherit;transition:.15s}
+  .pl-item:hover{background:rgba(203,176,126,.1)}
+  .pl-item.active{background:var(--accent-color);border-color:var(--accent-color)}
+  .pl-item.active .pl-title,.pl-item.active .pl-sub{color:#1a1512}
+  .pl-title{font-size:.98rem;font-weight:700;color:var(--primary-color)}
+  .pl-sub{font-size:.78rem;color:var(--muted)}
+  .pl-soon{font-size:.78rem;color:var(--muted);font-style:italic;padding:8px 4px 2px}
+  section{background:var(--bg-card);padding:26px;border-radius:12px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.28)}
+  .intro{color:var(--light-text);font-size:.95rem;margin-bottom:18px}
+  .intro strong{color:var(--accent-color)}
+  h2#mTitle{color:var(--primary-color);font-size:1.5rem;font-weight:600;margin-bottom:4px}
+  h2#mTitle .subm{font-weight:400;color:var(--muted);font-size:1rem}
+  #mMeta{font-size:13px;color:var(--light-text);margin-bottom:16px}
+  .pickrow{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+  .pickrow label{font-size:13px;color:var(--muted);font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif}
+  .arrsel{background:var(--bg-panel);color:var(--primary-color);border:1px solid var(--border);border-radius:8px;padding:8px 11px;font-size:14px;font-weight:600;font-family:inherit}
+  .scorebox{background:#f4ecdd;border:1px solid var(--border);border-radius:10px;overflow-x:auto;overflow-y:hidden;position:relative;margin-bottom:14px;min-height:168px}
+  .scorebox svg{height:168px;width:auto;display:block}
+  .scorebox svg .note.active *{fill:#9c5a2a!important;stroke:#9c5a2a!important}
+  #cursor{stroke:var(--red);stroke-width:90;opacity:.85}
+  .ab{display:flex;gap:8px;background:var(--bg-panel);padding:6px;border-radius:10px;margin-bottom:14px;border:1px solid var(--border)}
+  .ab button{flex:1;border:0;padding:13px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;background:transparent;color:var(--muted);transition:.15s;font-family:inherit}
+  .ab button.real.on{background:var(--accent-color);color:#1a1512}
+  .ab button.midi.on{background:var(--primary-color);color:#1a1512}
+  .transport{background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px}
+  .trow{display:flex;align-items:center;gap:13px}
+  .play{width:50px;height:50px;border-radius:50%;border:0;background:var(--accent-color);color:#1a1512;font-size:19px;cursor:pointer;flex:0 0 auto}
+  .mini{background:var(--bg-card);border:1px solid var(--border);color:var(--light-text);border-radius:8px;padding:9px 12px;cursor:pointer;font-size:13px;font-family:inherit}
+  .mini.on{background:var(--accent-color);border-color:var(--accent-color);color:#1a1512}
+  .time{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:5px;border-radius:5px;background:var(--border);outline:none;flex:1}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--accent-color);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:var(--accent-color)}
+  .track{background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:13px;margin-bottom:9px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .track.dim{opacity:.4}
+  .tname{font-weight:600;font-size:14px;min-width:92px}
+  .tsel{background:var(--bg-card);color:var(--light-text);border:1px solid var(--border);border-radius:7px;padding:6px 8px;font-size:13px;font-weight:600;min-width:92px;font-family:inherit}
+  .btn{border:1px solid var(--border);background:var(--bg-card);color:var(--muted);border-radius:8px;width:40px;height:34px;cursor:pointer;font-weight:700;font-size:13px;font-family:inherit}
+  .btn.mute.on{background:var(--red);border-color:var(--red);color:#fff}
+  .btn.solo.on{background:var(--green);border-color:var(--green);color:#1a1512}
+  .vol{max-width:160px}
+  #status{font-size:12px;color:var(--muted);margin:4px 2px;min-height:15px;font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif}
+  @media (max-width:850px){.container{grid-template-columns:1fr}aside{position:relative;top:0}}
+</style>
+</head>
+<body>
+<div class="container">
+  <aside>
+    <div class="brand"><img src="photo.png" alt="Romain Beauvais"><div><div class="nm">Reed&amp;Brass Lab</div><div class="rl">Romain Beauvais</div></div></div>
+    <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-setlang="fr">FR</button><button type="button" data-setlang="en">EN</button></div>
+    <div class="sidelinks">
+      <a class="slink" href="../index.html"><span class="lang-fr">&#8592; Portfolio</span><span class="lang-en">&#8592; Portfolio</span></a>
+      <a class="slink solid lang-fr" href="Romain_Beauvais_CV_FR.pdf" download>CV</a>
+      <a class="slink solid lang-en" href="Romain_Beauvais_CV_EN.pdf" download>CV</a>
+      <a class="slink" href="https://www.linkedin.com/in/romain-beauvais-146931a9" target="_blank">LinkedIn</a>
+    </div>
+    <div class="pl-head"><span class="lang-fr">Morceaux</span><span class="lang-en">Pieces</span></div>
+    <div id="playlist"></div>
+  </aside>
+  <main>
+    <section>
+      <p class="intro"><span class="lang-fr"><strong>Ecoute comparee - reel vs MIDI.</strong> Choisis un morceau dans la playlist, son arrangeur, coupe les voix a la volee, bascule reel/MIDI et suis la partition qui defile.</span><span class="lang-en"><strong>Compared listening - real vs MIDI.</strong> Pick a piece in the playlist, its arranger, mute voices on the fly, switch real/MIDI and follow the scrolling score.</span></p>
+      <h2 id="mTitle">Largo</h2>
+      <p id="mMeta"></p>
+      <div class="pickrow"><label for="arrSel"><span class="lang-fr">Arrangeur</span><span class="lang-en">Arranger</span></label><select class="arrsel" id="arrSel"></select></div>
+      <div class="scorebox" id="scorebox"></div>
+      <div class="ab"><button class="real on" id="abReal">R&#233;el</button><button class="midi" id="abMidi">MIDI</button></div>
+      <div class="transport"><div class="trow"><button class="play" id="play">&#9654;</button><button class="mini" id="stop">&#9632;</button><button class="mini" id="loop">Boucle</button><span class="time" id="time">0:00 / 0:00</span></div>
+        <div class="trow" style="margin-top:11px"><input type="range" id="seek" min="0" max="1000" value="0"></div></div>
+      <div id="tracks"></div>
+      <div id="status">Chargement...</div>
+    </section>
+  </main>
+</div>
+<script id="library" type="application/json">{"largo":{"title":"Largo","sub":"mesures 1-20","composer":"Anton&#237;n Dvo&#345;&#225;k","work":"Symphonie n&#176;9 &laquo; Du Nouveau Monde &raquo;, Op. 95 (2<sup>e</sup> mouv.)","defaultArr":"goodman","arrOrder":["goodman"],"arrangers":{"goodman":{"name":"Goodman","dur":{"real":98.61,"midi":96.6},"maxms":96923,"vbw":74440,"svg":"score_goodman.svg","tm":"tm_goodman.json","files":{"real":{"v1_trumpet":"v1_trumpet_real.mp3","v1_clarinet":"v1_clarinet_real.mp3","v2":"v2_real.mp3","v3":"v3_real.mp3"},"midi":{"v1_trumpet":"v1_trumpet_midi.mp3","v1_clarinet":"v1_clarinet_midi.mp3","v2":"v2_midi.mp3","v3":"v3_midi.mp3"}}}}}}</script>
+<script>
+const LIBRARY=JSON.parse(document.getElementById('library').textContent);
+let DUR={real:1,midi:1},MAXMS=1,VBW=1,PTS=[];
+const buf={real:{},midi:{}};
+const st={morceau:"largo",arr:null,bank:"real",timbre:"trumpet",playing:false,loop:false,startCtx:0,offset:0,
+  tr:[{muted:false,solo:false,vol:1},{muted:false,solo:false,vol:1},{muted:false,solo:false,vol:1}],srcs:[],gains:[]};
+let ctx=null;
+const $=s=>document.querySelector(s);
+const setStatus=m=>{const e=$("#status");if(e)e.textContent=m||"";};
+function ensureCtx(){if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();if(ctx.state==="suspended")ctx.resume();}
+function M(){return LIBRARY[st.morceau];}
+function A(){return M().arrangers[st.arr];}
+function keyFor(i){return i===0?("v1_"+st.timbre):(i===1?"v2":"v3");}
+function bufFor(i){return buf[st.bank][keyFor(i)];}
+function gainFor(i){const t=st.tr[i],anySolo=st.tr.some(x=>x.solo);const ok=(anySolo?t.solo:true)&&!t.muted;return ok?t.vol:0;}
+function applyGains(){if(!ctx)return;const now=ctx.currentTime;st.gains.forEach((g,i)=>{if(g)g.gain.setTargetAtTime(gainFor(i),now,.015);});}
+function stopSrcs(){st.srcs.forEach(s=>{try{s.stop()}catch(e){}try{s.disconnect()}catch(e){}});st.srcs=[];st.gains=[];}
+function startSrcs(off){ensureCtx();const now=ctx.currentTime+.04;st.startCtx=now-off;st.srcs=[];st.gains=[];
+  for(let i=0;i<3;i++){const b=bufFor(i);if(!b){st.srcs[i]=null;st.gains[i]=null;continue;}
+    const s=ctx.createBufferSource();s.buffer=b;const g=ctx.createGain();s.connect(g).connect(ctx.destination);
+    s.start(now,Math.min(off,b.duration));st.srcs[i]=s;st.gains[i]=g;}applyGains();}
+function curTime(){return st.playing?ctx.currentTime-st.startCtx:st.offset;}
+function curP(){return Math.max(0,Math.min(1,curTime()/DUR[st.bank]));}
+function play(){ensureCtx();if(!bufFor(0)){setStatus("Audio pas encore pret.");return;}startSrcs(st.offset);st.playing=true;$("#play").innerHTML="&#10074;&#10074;";tick();}
+function pause(){if(!st.playing)return;st.offset=curTime();stopSrcs();st.playing=false;$("#play").innerHTML="&#9654;";}
+function stopPlay(){stopSrcs();st.playing=false;st.offset=0;$("#play").innerHTML="&#9654;";draw();}
+function switchBank(b){if(b===st.bank)return;const p=curP();st.bank=b;
+  $("#abReal").classList.toggle("on",b==="real");$("#abMidi").classList.toggle("on",b==="midi");
+  if(st.playing){stopSrcs();startSrcs(p*DUR[b]);}else{st.offset=p*DUR[b];}draw();}
+function fmt(s){s=Math.max(0,s|0);return (s/60|0)+":"+String(s%60).padStart(2,"0");}
+let seeking=false;
+function tick(){if(!st.playing)return;if(curTime()>=DUR[st.bank]){if(st.loop){st.offset=0;stopSrcs();startSrcs(0);}else{stopPlay();return;}}draw();requestAnimationFrame(tick);}
+let svg=null,cursor=null,XP=[],activeIds=[];
+function setupCursor(){svg=$("#scorebox svg");if(!svg)return;
+  cursor=document.createElementNS("http://www.w3.org/2000/svg","line");cursor.id="cursor";svg.appendChild(cursor);
+  let vbH=6600;const vb=svg.getAttribute("viewBox");if(vb){const a=vb.split(/\s+/).map(Number);vbH=a[3];VBW=a[2];}
+  cursor.setAttribute("y1",0);cursor.setAttribute("y2",vbH);}
+function buildX(){XP=PTS.map(p=>{let x=null;for(const id of p.on){const el=document.getElementById(id);if(el){try{const b=el.getBBox();x=b.x+b.width/2;break;}catch(e){}}}return {t:p.t,x:x,on:p.on};}).filter(p=>p.x!==null);}
+function xAtMs(ms){if(!XP.length)return 0;if(ms<=XP[0].t)return XP[0].x;if(ms>=XP[XP.length-1].t)return XP[XP.length-1].x;
+  let lo=0,hi=XP.length-1;while(lo<hi-1){const m=(lo+hi)>>1;if(XP[m].t<=ms)lo=m;else hi=m;}
+  const a=XP[lo],b=XP[hi],f=(ms-a.t)/Math.max(1,b.t-a.t);return a.x+f*(b.x-a.x);}
+function highlight(ms){let idx=-1;for(let i=0;i<XP.length;i++){if(XP[i].t<=ms)idx=i;else break;}
+  const ids=idx>=0?XP[idx].on:[];if(ids.join()===activeIds.join())return;
+  activeIds.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove("active");});
+  ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add("active");});activeIds=ids;}
+const box=()=>$("#scorebox");
+function draw(){const p=curP(),ms=p*MAXMS,x=xAtMs(ms);
+  if(cursor){cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);}highlight(ms);
+  if(svg){const sw=svg.getBoundingClientRect().width;box().scrollLeft=(x/VBW)*sw-box().clientWidth*0.42;}
+  $("#time").textContent=fmt(p*MAXMS/1000)+" / "+fmt(MAXMS/1000);if(!seeking)$("#seek").value=p*1000;}
+function renderTracks(){const el=$("#tracks");el.innerHTML="";
+  const anySolo=st.tr.some(x=>x.solo);const names=[null,"Cor","Trombone"];
+  for(let i=0;i<3;i++){const dim=st.tr[i].muted||(anySolo&&!st.tr[i].solo);
+    const row=document.createElement("div");row.className="track"+(dim?" dim":"");
+    const nameHtml=i===0
+      ?'<select class="tsel" id="timbre"><option value="trumpet"'+(st.timbre==="trumpet"?" selected":"")+'>Trompette</option><option value="clarinet"'+(st.timbre==="clarinet"?" selected":"")+'>Clarinette</option></select>'
+      :'<span class="tname">'+names[i]+'</span>';
+    row.innerHTML=nameHtml+'<button class="btn mute '+(st.tr[i].muted?"on":"")+'" data-m="'+i+'">M</button>'+
+      '<button class="btn solo '+(st.tr[i].solo?"on":"")+'" data-s="'+i+'">S</button>'+
+      '<input type="range" class="vol" min="0" max="1" step="0.01" value="'+st.tr[i].vol+'" data-v="'+i+'">';
+    el.appendChild(row);}
+  el.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{st.tr[+b.dataset.m].muted^=1;applyGains();renderTracks();});
+  el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{st.tr[+b.dataset.s].solo^=1;applyGains();renderTracks();});
+  el.querySelectorAll("[data-v]").forEach(r=>r.oninput=()=>{st.tr[+r.dataset.v].vol=+r.value;applyGains();});
+  const tb=$("#timbre");if(tb)tb.onchange=()=>{st.timbre=tb.value;const p=curP();if(st.playing){stopSrcs();startSrcs(p*DUR[st.bank]);}else{st.offset=p*DUR[st.bank];}};
+}
+async function loadArranger(id){const cfg=M().arrangers[id];if(!cfg)return;st.arr=id;stopPlay();ensureCtx();
+  setStatus("Chargement "+cfg.name+"...");$("#arrName").textContent=cfg.name;
+  DUR=cfg.dur;MAXMS=cfg.maxms;VBW=cfg.vbw;buf.real={};buf.midi={};activeIds=[];XP=[];
+  try{const t=await fetch(cfg.svg).then(r=>r.text());box().innerHTML=t;setupCursor();}catch(e){box().textContent="Partition indisponible.";}
+  try{PTS=await fetch(cfg.tm).then(r=>r.json());}catch(e){PTS=[];}
+  const jobs=[];for(const bank of ["real","midi"])for(const k in cfg.files[bank]){const bk=bank,key=k;
+    jobs.push(fetch(cfg.files[bk][key]).then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).then(b=>{buf[bk][key]=b;}).catch(()=>{}));}
+  await Promise.all(jobs);setStatus("Pret - "+Math.round(MAXMS/1000)+"s");
+  requestAnimationFrame(()=>{buildX();draw();});}
+function loadMorceau(id){if(!LIBRARY[id])return;st.morceau=id;const m=M();
+  document.querySelectorAll('.pl-item').forEach(e=>e.classList.toggle('active',e.dataset.m===id));
+  $("#mTitle").innerHTML=m.title+' <span class="subm">&middot; '+m.sub+'</span>';
+  $("#mMeta").innerHTML=m.composer+' &middot; '+m.work;
+  const sel=$("#arrSel");sel.innerHTML=m.arrOrder.map(k=>'<option value="'+k+'">'+m.arrangers[k].name+'</option>').join('')+'<option value="" disabled>Autres arrangeurs (a venir)</option>';
+  st.bank="real";$("#abReal").classList.add("on");$("#abMidi").classList.remove("on");
+  st.timbre="trumpet";st.tr.forEach(t=>{t.muted=false;t.solo=false;t.vol=1;});renderTracks();
+  sel.value=m.defaultArr;loadArranger(m.defaultArr);
+}
+function renderPlaylist(){const ul=$("#playlist");ul.innerHTML="";
+  ["largo"].forEach(id=>{const m=LIBRARY[id];const li=document.createElement("button");
+    li.className="pl-item"+(id===st.morceau?" active":"");li.dataset.m=id;
+    li.innerHTML='<span class="pl-title">'+m.title+'</span><span class="pl-sub">'+m.composer+'</span>';
+    li.onclick=()=>loadMorceau(id);ul.appendChild(li);});
+  const dis=document.createElement("div");dis.className="pl-soon";
+  dis.innerHTML='<span class="lang-fr">Autres morceaux a venir</span><span class="lang-en">More pieces soon</span>';ul.appendChild(dis);
+}
+$("#play").onclick=()=>{ensureCtx();st.playing?pause():play();};
+$("#stop").onclick=stopPlay;
+$("#loop").onclick=e=>{st.loop=!st.loop;e.target.classList.toggle("on",st.loop);};
+$("#abReal").onclick=()=>switchBank("real");
+$("#abMidi").onclick=()=>switchBank("midi");
+$("#arrSel").onchange=e=>{if(e.target.value&&M().arrangers[e.target.value])loadArranger(e.target.value);else e.target.value=st.arr;};
+const seek=$("#seek");
+seek.addEventListener("input",()=>{seeking=true;const p=seek.value/1000;$("#time").textContent=fmt(p*MAXMS/1000)+" / "+fmt(MAXMS/1000);const x=xAtMs(p*MAXMS);if(cursor){cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);}});
+seek.addEventListener("change",()=>{const p=seek.value/1000;seeking=false;if(st.playing){stopSrcs();startSrcs(p*DUR[st.bank]);}else{st.offset=p*DUR[st.bank];}draw();});
+renderPlaylist();loadMorceau(st.morceau);
+</script>
+<script>(function(){function setLang(l){if(l!=='en')l='fr';document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l;try{localStorage.setItem('lang',l);}catch(e){}var b=document.querySelectorAll('.lang-switch button');for(var i=0;i<b.length;i++)b[i].classList.toggle('active',b[i].getAttribute('data-setlang')===l);}
+document.addEventListener('DOMContentLoaded',function(){var b=document.querySelectorAll('.lang-switch button');for(var i=0;i<b.length;i++)b[i].addEventListener('click',function(){setLang(this.getAttribute('data-setlang'));});setLang(document.documentElement.getAttribute('data-lang')||'fr');});})();</script>
+<script data-goatcounter="https://romainbv.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
