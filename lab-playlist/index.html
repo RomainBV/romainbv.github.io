@@ -2,7 +2,7 @@
 <html lang="fr" data-lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reed&amp;Brass Lab - Ecoute comparée | Romain Beauvais</title>
+<title>Reed&amp;Brass Lab - &#201;coute compar&#233;e | Romain Beauvais</title>
 <script>try{document.documentElement.setAttribute('data-lang',localStorage.getItem('lang')||'fr');}catch(e){document.documentElement.setAttribute('data-lang','fr');}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-sans-serif.css">
@@ -90,7 +90,7 @@
   </aside>
   <main>
     <section>
-      <p class="intro"><span class="lang-fr"><strong>Ecoute comparée - Simu vs MIDI.</strong> Sons MIDI : rendu MuseScore 4.</span><span class="lang-en"><strong>Compared listening - Simu vs MIDI.</strong> MIDI sounds: MuseScore 4 render.</span></p>
+      <p class="intro"><span class="lang-fr"><strong>&#201;coute compar&#233;e - Simu vs MIDI.</strong> Sons MIDI : rendu MuseScore 4.</span><span class="lang-en"><strong>Compared listening - Simu vs MIDI.</strong> MIDI sounds: MuseScore 4 render.</span></p>
       <h2 id="mTitle">Largo</h2>
       <p id="mMeta"></p>
       <div class="scorebox" id="scorebox"><div class="score" id="score-largo_goodman"><svg width="3127px" height="278px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="visible" id="apdopif">
@@ -3696,7 +3696,7 @@ const TM=JSON.parse(document.getElementById('tm').textContent);
 const byId=Object.fromEntries(CFG.map(c=>[c.id,c]));
 let DUR={real:1,midi:1},MAXMS=1,VBW=1,PTS=[];
 const A={};
-const st={cfg:CFG[0].id,bank:"real",timbre:"trumpet",playing:false,loop:false,pos:0,
+const st={cfg:CFG[0].id,bank:"real",timbre:"clarinet",playing:false,loop:false,pos:0,
   tr:[{muted:false,solo:false,vol:1},{muted:false,solo:false,vol:1},{muted:false,solo:false,vol:1}]};
 const $=s=>document.querySelector(s);
 const setStatus=m=>{const e=$("#status");if(e)e.textContent=m||"";};
@@ -3705,7 +3705,7 @@ function initAudio(){
   CFG.forEach(c=>{A[c.id]={real:{},midi:{}};
     for(const bank of ["real","midi"])for(const k in c.files[bank]){totalAudio++;
       const a=new Audio();a.preload="auto";a.src=c.files[bank][k];A[c.id][bank][k]=a;
-      a.addEventListener('loadedmetadata',()=>{if(isFinite(a.duration))byId[c.id].dur[bank]=Math.max(byId[c.id].dur[bank]||0,a.duration);loaded++;if(loaded>=totalAudio)setStatus("Pret.");});
+      a.addEventListener('loadedmetadata',()=>{if(isFinite(a.duration))byId[c.id].dur[bank]=Math.max(byId[c.id].dur[bank]||0,a.duration);loaded++;if(loaded>=totalAudio)setStatus("");});
       a.addEventListener('error',()=>setStatus("Erreur de chargement ("+a.src.split('/').pop()+")."));}});
 }
 function keyFor(i){return i===0?("v1_"+st.timbre):(i===1?"v2":"v3");}
@@ -3747,7 +3747,7 @@ function draw(){if(!svg)return;const p=curP(),ms=p*MAXMS,x=xAtMs(ms);cursor.setA
   $("#time").textContent=fmt(p*MAXMS/1000)+" / "+fmt(MAXMS/1000);if(!seeking)$("#seek").value=p*1000;}
 function renderTracks(){const el=$("#tracks");el.innerHTML="";const anySolo=st.tr.some(x=>x.solo);const names=[null,"Cor","Trombone"];
   for(let i=0;i<3;i++){const dim=st.tr[i].muted||(anySolo&&!st.tr[i].solo);const row=document.createElement("div");row.className="track"+(dim?" dim":"");
-    const nameHtml=i===0?'<select class="tsel" id="timbre"><option value="trumpet"'+(st.timbre==="trumpet"?" selected":"")+'>Trompette</option><option value="clarinet"'+(st.timbre==="clarinet"?" selected":"")+'>Clarinette</option></select>':'<span class="tname">'+names[i]+'</span>';
+    const nameHtml=i===0?'<select class="tsel" id="timbre"><option value="clarinet"'+(st.timbre==="clarinet"?" selected":"")+'>Clarinette</option><option value="trumpet"'+(st.timbre==="trumpet"?" selected":"")+'>Trompette</option></select>':'<span class="tname">'+names[i]+'</span>';
     row.innerHTML=nameHtml+'<button class="btn mute '+(st.tr[i].muted?"on":"")+'" data-m="'+i+'">M</button><button class="btn solo '+(st.tr[i].solo?"on":"")+'" data-s="'+i+'">S</button><input type="range" class="vol" min="0" max="1" step="0.01" value="'+st.tr[i].vol+'" data-v="'+i+'">';
     el.appendChild(row);}
   el.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{st.tr[+b.dataset.m].muted^=1;applyGains();renderTracks();});
@@ -3755,7 +3755,7 @@ function renderTracks(){const el=$("#tracks");el.innerHTML="";const anySolo=st.t
   el.querySelectorAll("[data-v]").forEach(r=>r.oninput=()=>{st.tr[+r.dataset.v].vol=+r.value;applyGains();});
   const tb=$("#timbre");if(tb)tb.onchange=()=>{const p=curP();st.timbre=tb.value;st.pos=p*DUR[st.bank];resync(st.playing);};
 }
-function selectCfg(id){const c=byId[id];if(!c)return;pauseAll();st.cfg=id;st.bank="real";st.timbre="trumpet";st.pos=0;st.playing=false;
+function selectCfg(id){const c=byId[id];if(!c)return;pauseAll();st.cfg=id;st.bank="real";st.timbre="clarinet";st.pos=0;st.playing=false;
   st.tr.forEach(t=>{t.muted=false;t.solo=false;t.vol=1;});
   DUR=c.dur;MAXMS=c.maxms;VBW=c.vbw;PTS=TM[id];
   document.querySelectorAll('.pl-item').forEach(e=>e.classList.toggle('active',e.dataset.cfg===id));
