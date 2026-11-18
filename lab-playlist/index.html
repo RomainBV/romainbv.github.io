@@ -11,7 +11,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'CMU Serif','Latin Modern Roman',Georgia,serif;color:var(--light-text);background:var(--bg-body);line-height:1.6}
   h1,h2,h3{font-family:'CMU Serif','Latin Modern Roman',Georgia,serif;font-weight:700;letter-spacing:.2px}
-  .container{max-width:1150px;margin:0 auto;padding:20px;display:grid;grid-template-columns:270px 1fr;gap:26px}
+  .container{max-width:980px;margin:0 auto;padding:18px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px}
   html[data-lang="fr"] .lang-en{display:none}
   html[data-lang="en"] .lang-fr{display:none}
   aside{background:linear-gradient(160deg,#1e1713 0%,#140f0c 100%);color:#f1e7d9;border:1px solid var(--border);padding:22px 18px;border-radius:12px;height:fit-content;position:sticky;top:20px}
@@ -32,6 +32,7 @@
   .pl-item .pl-title{font-size:.98rem;font-weight:700;color:#1a1512}
   .pl-item .pl-sub{font-size:.78rem;color:#1a1512}
   .pl-soon{font-size:.78rem;color:var(--muted);font-style:italic;padding:8px 4px 2px}
+  main{min-width:0}
   section{background:var(--bg-card);padding:26px;border-radius:12px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.28)}
   .intro{color:var(--light-text);font-size:.95rem;margin-bottom:18px}
   .intro strong{color:var(--accent-color)}
@@ -64,7 +65,23 @@
   .btn.solo.on{background:var(--green);border-color:var(--green);color:#1a1512}
   .vol{max-width:160px}
   #status{font-size:12px;color:var(--muted);margin:4px 2px;min-height:15px;font-family:'CMU Sans Serif','Latin Modern Sans',sans-serif}
-  @media (max-width:850px){.container{grid-template-columns:1fr}aside{position:relative;top:0}}
+  @media (max-width:850px){.container{grid-template-columns:minmax(0,1fr)}aside{position:relative;top:0}}
+  @media (max-width:600px){
+    body{padding:10px}
+    .container{padding:0;gap:14px}
+    section{padding:15px}
+    aside{padding:16px 14px}
+    h2#mTitle{font-size:1.22rem}
+    .scorebox svg{height:140px}
+    .ab button{padding:11px;font-size:14px}
+    .play{width:46px;height:46px;font-size:17px}
+    .mini{padding:8px 10px}
+    .trow{gap:9px}
+    .track{padding:10px;gap:8px}
+    .tname{min-width:0}
+    .tsel{min-width:86px}
+    .vol{max-width:none;flex:1 1 100%;margin-top:2px}
+  }
 </style>
 </head>
 <body>
